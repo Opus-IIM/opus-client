@@ -202,7 +202,6 @@ export default createGlobalStyle`
 
         :hover {
             filter: brightness(0.8);
-       
         }
     }
 
