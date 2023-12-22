@@ -1,12 +1,4 @@
-import styled from "styled-components";
-
+import { HomeScreen } from "../screens/Homepage";
 export default function Home() {
-  return <HomeContainer>Opus</HomeContainer>;
+  return <HomeScreen />;
 }
-
-const HomeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
