@@ -16,6 +16,7 @@ const light: Theme = {
       primary: "#2b2d42",
       secondary: "",
       contrast: "#2b2d42",
+      light: "#f8f9fa",
     },
     button: {
       background: "",

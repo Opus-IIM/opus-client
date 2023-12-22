@@ -22,6 +22,7 @@ export type Theme = {
       primary: string;
       secondary: string;
       contrast: string;
+      light: string;
     };
 
     button: ButtonTheme;
