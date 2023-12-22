@@ -8,18 +8,13 @@ export type Theme = {
   id: number;
   name: string;
   colors: {
+    primary: string;
     light: string;
     dark: string;
     danger: string;
     white: string;
     gray: {
       600: string;
-    };
-    employee: {
-      primary: string;
-    };
-    RH: {
-      primary: string;
     };
     text: {
       light: string;
