@@ -8,7 +8,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default function TestStrapi() {
+export default function DisplayEmployee() {
   const [data, setData] = useState<
     {
       id: number;
@@ -18,9 +18,8 @@ export default function TestStrapi() {
 
   useEffect(() => {
     redaxios
-      .get("http://localhost:1337/api/humanresources")
+      .get("http://localhost:1337/api/employees")
       .then((res) => {
-        // Assuming the response data is in res.data.data
         setData(res.data.data);
       })
       .catch((error) => {
