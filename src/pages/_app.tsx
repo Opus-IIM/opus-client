@@ -1,4 +1,5 @@
 import "remixicon/fonts/remixicon.css";
+import "@styles/main.css";
 
 import React from "react";
 import { GlobalThemeProvider } from "@contexts/GlobalTheme";

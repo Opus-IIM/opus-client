@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "adieu";
+  src:
+    url("/public/fonts/adieu-webfont.woff2") format("woff2"),
+    url("/public/fonts/adieu-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "adieu";
+  src:
+    url("/public/fonts/adieu-bold-webfont.woff2") format("woff2"),
+    url("/public/fonts/adieu-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "adieu";
+  src:
+    url("/public/fonts/adieu-light-webfont.woff2") format("woff2"),
+    url("/public/fonts/adieu-light-webfont.woff") format("woff");
+  font-weight: light;
+  font-style: normal;
+}
