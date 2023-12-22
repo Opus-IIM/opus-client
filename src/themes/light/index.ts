@@ -4,8 +4,8 @@ const light: Theme = {
   id: 0,
   name: "light",
   colors: {
-    primary: "#f8f9fa",
-    secondary: "",
+    primary: "#1E73BE",
+    secondary: "#40D9F1",
 
     background: {
       primary: "#f8f9fa",

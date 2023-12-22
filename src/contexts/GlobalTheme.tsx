@@ -17,11 +17,11 @@ const GlobalThemeProvider = (props: any) => {
   const [globalTheme, setGlobalTheme] = React.useState(themes.light);
 
   const switchTheme = () => {
-    setGlobalTheme(globalTheme.name === "dark" ? themes.light : themes.dark);
+    setGlobalTheme(themes.light);
   };
 
   React.useEffect(() => {
-    setGlobalTheme(isDarkTheme ? themes.dark : themes.light);
+    setGlobalTheme(themes.light);
   }, [isDarkTheme]);
 
   return (

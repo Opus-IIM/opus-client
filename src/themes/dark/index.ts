@@ -4,8 +4,8 @@ const dark: Theme = {
   id: 0,
   name: "dark",
   colors: {
-    primary: "#212529",
-    secondary: "",
+    primary: "#1E73BE",
+    secondary: "#40D9F1",
 
     background: {
       primary: "#212529",
