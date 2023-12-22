@@ -4,19 +4,22 @@ const light: Theme = {
   id: 0,
   name: "light",
   colors: {
-    primary: "#1E73BE",
-    secondary: "#40D9F1",
-
-    background: {
-      primary: "#f8f9fa",
-      secondary: "",
-      contrast: "",
+    light: "#F8F9FA",
+    dark: "#242424",
+    danger: "#ED4F9D",
+    white: "#FFFFFF",
+    gray: {
+      600: "#64748B",
+    },
+    employee: {
+      primary: "#3FA34D",
+    },
+    RH: {
+      primary: "#1E73BE",
     },
     text: {
-      primary: "#2b2d42",
-      secondary: "",
-      contrast: "#2b2d42",
       light: "#f8f9fa",
+      dark: "#242424",
     },
     button: {
       background: "",
