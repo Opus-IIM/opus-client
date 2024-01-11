@@ -7,7 +7,7 @@ type employeesAPI = {
   getEmployees: typeof getEmployees;
   getEmploye: typeof getEmploye;
 };
-const getEmployees = async () => requester(true).get<Employee>(BASE_URL);
+const getEmployees = async () => requester(true).get<Employee[]>(BASE_URL);
 
 const getEmploye = async (id: number) =>
   requester(true).get<Employee>(`${BASE_URL}/${id}`);
