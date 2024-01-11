@@ -4,7 +4,7 @@ import { APIResponse } from "@typesDef/API";
 import { Employee } from "@typesDef/Employee";
 import { NextPage } from "next";
 
-export const Employees: NextPage = () => {
+const Employees: NextPage = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
 
   useEffect(() => {
@@ -25,3 +25,5 @@ export const Employees: NextPage = () => {
 
   return <div>Employees</div>;
 };
+
+export default Employees;
