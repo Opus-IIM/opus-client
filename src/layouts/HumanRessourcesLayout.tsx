@@ -9,7 +9,7 @@ export const HumanRessourcesLayout: React.FC<LayoutProps> = ({ children }) => {
       <div className="app">
         <NavBar />
         <TopBar />
-        {children}
+        <div className="main">{children}</div>
       </div>
     </HumanRessourcesContainer>
   );
@@ -19,16 +19,17 @@ const HumanRessourcesContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.primary};
   background-size: 400% 400%;
   animation: main-background 10s ease infinite;
   transition: background 0.3s ease-in-out;
 
-  .app {
+  .main {
     width: 100%;
-    margin-top: 88px;
-    margin-left: 250px;
+    min-height: 100%;
+    padding-top: 88px;
+    padding-left: 250px;
   }
 `;
