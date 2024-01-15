@@ -184,13 +184,11 @@ export default createGlobalStyle`
     select,
     option {
         text-align: left;
-        color: ${({ theme }) => theme.colors.text.primary};
         line-height: 1.25;
     }
 
     a {
         text-decoration: none;
-        color: ${({ theme }) => theme.colors.text.secondary};
         transition: all 0.2s;
         cursor: pointer;
 
@@ -201,7 +199,6 @@ export default createGlobalStyle`
 
     p {
         transition: all 0.2s;
-        color: ${({ theme }) => theme.colors.text.contrast};
     }
 
     /* animations */

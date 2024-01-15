@@ -21,6 +21,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@pages/*": ["./src/pages/*"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@public/*": ["./public/*"],
       "@services/*": ["./src/services/*"],
       "@screens/*": ["./src/screens/*"],
       "@stores/*": ["./src/stores/*"],
