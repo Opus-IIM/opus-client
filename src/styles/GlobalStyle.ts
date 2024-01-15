@@ -183,17 +183,12 @@ export default createGlobalStyle`
     textarea,
     select,
     option {
-        font-family: ${({ theme }) => theme.family.primary};
-        font-size: ${({ theme }) => theme.size.normal};
-        font-weight: ${({ theme }) => theme.weight.regular};
         text-align: left;
-        color: ${({ theme }) => theme.colors.text.primary};
         line-height: 1.25;
     }
 
     a {
         text-decoration: none;
-        color: ${({ theme }) => theme.colors.text.secondary};
         transition: all 0.2s;
         cursor: pointer;
 
@@ -204,7 +199,6 @@ export default createGlobalStyle`
 
     p {
         transition: all 0.2s;
-        color: ${({ theme }) => theme.colors.text.contrast};
     }
 
     /* animations */

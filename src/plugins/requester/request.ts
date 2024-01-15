@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig } from "axios";
 type ApiRequestConfig = Exclude<AxiosRequestConfig, "method">;
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_PATH,
+  baseURL: process.env.NEXT_PUBLIC_API_PATH || "http://localhost:1337/api",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
