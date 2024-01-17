@@ -10,6 +10,8 @@ import { CustomAppProps } from "@typesDef/APP";
 import Head from "next/head";
 
 export default function App({ Component, pageProps }: CustomAppProps) {
+  const getLayout =
+    Component.getLayout || ((page) => <AppLayout>{page}</AppLayout>);
   return (
     <GlobalThemeProvider>
       <LayoutProvider>
@@ -20,10 +22,8 @@ export default function App({ Component, pageProps }: CustomAppProps) {
           />
           <title>Opus</title>
         </Head>
-        <AppLayout>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </AppLayout>
+        <GlobalStyle />
+        {getLayout(<Component {...pageProps} />)}
       </LayoutProvider>
     </GlobalThemeProvider>
   );
