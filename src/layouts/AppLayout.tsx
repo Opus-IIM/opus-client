@@ -1,17 +1,7 @@
-import { useContext } from "react";
-import { LayoutContext } from "@contexts/LayoutContext";
 import { LayoutProps } from "@typesDef/APP";
 import styled from "styled-components";
 
-import { HumanRessourcesLayout } from "./HumanRessourcesLayout";
-
 export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
-  const Layout = useContext(LayoutContext);
-
-  if (Layout.layout === "humanRessources") {
-    return <HumanRessourcesLayout>{children}</HumanRessourcesLayout>;
-  }
-
   return <AppLayoutContainer>{children}</AppLayoutContainer>;
 };
 

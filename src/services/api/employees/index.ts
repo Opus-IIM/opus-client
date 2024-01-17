@@ -5,16 +5,16 @@ const BASE_URL = "/employees";
 
 type employeesAPI = {
   getEmployees: typeof getEmployees;
-  getEmploye: typeof getEmploye;
+  getEmployee: typeof getEmployee;
 };
 const getEmployees = async () => requester(true).get<Employee[]>(BASE_URL);
 
-const getEmploye = async (id: number) =>
+const getEmployee = async (id: number | string) =>
   requester(true).get<Employee>(`${BASE_URL}/${id}`);
 
 const employeesApi: employeesAPI = {
   getEmployees,
-  getEmploye,
+  getEmployee,
 };
 
 export type { employeesAPI };

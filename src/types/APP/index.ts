@@ -7,7 +7,7 @@ export type LayoutProps = {
 };
 
 export type CustomNextPage<P = object, IP = P> = NextPage<P, IP> & {
-  getAuthAndLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 export type CustomAppProps = AppProps & {
   Component: CustomNextPage;
