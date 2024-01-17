@@ -9,7 +9,7 @@ export const HomeScreen: React.FC = () => {
     <HomePageContainer>
       <EmployeeSection
         onClick={() => {
-          Router.push("/employe");
+          Router.push("/connexion?role=employe");
         }}
       >
         JE SUIS EMPLOYÉ
@@ -27,7 +27,7 @@ export const HomeScreen: React.FC = () => {
 
       <RHSection
         onClick={() => {
-          Router.push("/rh");
+          Router.push("/connexion?role=rh");
         }}
       >
         JE SUIS RH

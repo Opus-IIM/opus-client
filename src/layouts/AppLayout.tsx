@@ -1,11 +1,7 @@
-import { FC } from "react";
+import { LayoutProps } from "@typesDef/APP";
 import styled from "styled-components";
 
-type LayoutProps = {
-  children: JSX.Element[] | JSX.Element | string | string[];
-};
-
-export const AppLayout: FC<LayoutProps> = ({ children }) => {
+export const AppLayout: React.FC<LayoutProps> = ({ children }) => {
   return <AppLayoutContainer>{children}</AppLayoutContainer>;
 };
 
