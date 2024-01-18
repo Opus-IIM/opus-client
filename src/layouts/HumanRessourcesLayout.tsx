@@ -17,6 +17,7 @@ export const HumanRessourcesLayout: React.FC<LayoutProps> = ({ children }) => {
 
 const HumanRessourcesContainer = styled.div`
   min-height: 100vh;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,6 +26,15 @@ const HumanRessourcesContainer = styled.div`
   background-size: 400% 400%;
   animation: main-background 10s ease infinite;
   transition: background 0.3s ease-in-out;
+
+  .app {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 
   .main {
     width: 100%;

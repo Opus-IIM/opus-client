@@ -1,20 +1,22 @@
+import { AppLogo } from "@components/common/app/AppLogo";
 import { styled } from "styled-components";
 
 export const NavBar: React.FC = () => {
   return (
     <NavBarContainer>
-      <h1>NavBar</h1>
+      <AppLogo />
     </NavBarContainer>
   );
 };
 
 const NavBarContainer = styled.div`
   height: 100vh;
-  width: 250px;
+  width: calc(250px - 32px);
   user-select: none;
   position: fixed;
   top: 0;
   bottom: 0;
   z-index: 100;
-  background: red;
+  background: ${({ theme }) => theme.colors.white};
+  padding: 32px 16px;
 `;
