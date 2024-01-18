@@ -1,14 +1,11 @@
-import { useContext } from "react";
 import { HomeDashboardScreen } from "@components/Pages/HumanRessources/HomeDashboard";
-import { LayoutContext } from "@contexts/LayoutContext";
-import { NextPage } from "next";
+import { getHumanRessourcesLayout } from "@layouts/getLayouts";
+import { CustomNextPage } from "@typesDef/APP";
 
-const HomeDashboard: NextPage = () => {
-  const Layout = useContext(LayoutContext);
-
-  Layout.setLayout("humanRessources");
-
+const HomeDashboard: CustomNextPage = () => {
   return <HomeDashboardScreen />;
 };
 
 export default HomeDashboard;
+
+HomeDashboard.getLayout = getHumanRessourcesLayout;
