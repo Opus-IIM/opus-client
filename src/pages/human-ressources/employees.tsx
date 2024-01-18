@@ -1,14 +1,11 @@
-import { useContext } from "react";
 import { AllEmployeesScreen } from "@components/Pages/HumanRessources/AllEmployees";
-import { LayoutContext } from "@contexts/LayoutContext";
-import { NextPage } from "next";
+import { getHumanRessourcesLayout } from "@layouts/getLayouts";
+import { CustomNextPage } from "@typesDef/APP";
 
-const AllEmployees: NextPage = () => {
-  const Layout = useContext(LayoutContext);
-
-  Layout.setLayout("humanRessources");
-
+const AllEmployees: CustomNextPage = () => {
   return <AllEmployeesScreen />;
 };
 
 export default AllEmployees;
+
+AllEmployees.getLayout = getHumanRessourcesLayout;
