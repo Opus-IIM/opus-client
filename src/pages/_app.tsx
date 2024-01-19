@@ -5,10 +5,12 @@ import React from "react";
 import { GlobalThemeProvider } from "@contexts/GlobalTheme";
 import { AppLayout } from "@layouts/AppLayout";
 import GlobalStyle from "@styles/GlobalStyle";
-import type { AppProps } from "next/app";
+import { CustomAppProps } from "@typesDef/APP";
 import Head from "next/head";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: CustomAppProps) {
+  const getLayout =
+    Component.getLayout || ((page) => <AppLayout>{page}</AppLayout>);
   return (
     <GlobalThemeProvider>
       <Head>
@@ -18,10 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <title>Opus</title>
       </Head>
-      <AppLayout>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </AppLayout>
+      <GlobalStyle />
+      {getLayout(<Component {...pageProps} />)}
     </GlobalThemeProvider>
   );
 }

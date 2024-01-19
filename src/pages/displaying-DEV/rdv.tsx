@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import redaxios from "redaxios";
+import axios from "axios";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -20,7 +20,7 @@ export default function DisplayRdv() {
   >([]);
 
   useEffect(() => {
-    redaxios
+    axios
       .get("http://localhost:1337/api/rdvs")
       .then((res) => {
         setData(res.data.data);
