@@ -9,8 +9,9 @@ const employee: Theme = {
     dark: "#242424",
     danger: "#ED4F9D",
     white: "#FFFFFF",
-    gray: {
+    grey: {
       600: "#64748B",
+      400: "#94A3B8",
     },
     text: {
       light: "#f8f9fa",
