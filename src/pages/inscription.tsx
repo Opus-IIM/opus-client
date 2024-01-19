@@ -2,15 +2,39 @@ import { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
+import SERVICES from "@services/index";
 import employee from "@themes/employee";
 import humanResources from "@themes/humanResources";
+import { RegisterData } from "@typesDef/Register";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function Register() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const router = useRouter();
+
+  const registerUser = async () => {
+    if (!email || !password || !name) return;
+    const data: RegisterData = {
+      email,
+      password,
+      name,
+      role: role === "employe" ? "employee" : "humanResources",
+    };
+    try {
+      const res = await SERVICES.API.registerUser(data);
+      if (!res.success) return;
+      const { message } = res.data;
+      console.log("@Register res", message);
+      //TODO: finish register
+    } catch (err) {
+      console.error("@Register error", err);
+    }
+  };
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -36,18 +60,32 @@ export default function Register() {
       <FormContainer>
         <Title>Inscription</Title>
         <Form>
-          <InputWithIcon icon="ri-user-line" placeholder="Nom" type="text" />
+          <InputWithIcon
+            icon="ri-user-line"
+            placeholder="Nom"
+            type="text"
+            onChangeFnc={(e) => setName(e.target.value)}
+          />
           <InputWithIcon
             icon="ri-mail-line"
             placeholder="Adresse email"
             type="email"
+            onChangeFnc={(e) => setEmail(e.target.value)}
           />
           <InputWithIcon
             icon="ri-lock-2-line"
             placeholder="Mot de passe"
             type="password"
+            onChangeFnc={(e) => setPassword(e.target.value)}
           />
-          <Button>S&apos;inscrire</Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              registerUser();
+            }}
+          >
+            S&apos;inscrire
+          </Button>
           <LoginPrompt>
             Vous possédez déjà un compte ? <br />{" "}
             <a href={`connexion?role=${role}`}>Se connecter</a>

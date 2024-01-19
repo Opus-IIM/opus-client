@@ -2,15 +2,36 @@ import { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
+import SERVICES from "@services/index";
 import employee from "@themes/employee";
 import humanResources from "@themes/humanResources";
+import { LoginData } from "@typesDef/Login";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function Login() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
+
+  const connectUser = async () => {
+    if (!email || !password) return;
+    const data: LoginData = {
+      email,
+      password,
+    };
+    try {
+      const res = await SERVICES.API.loginUser(data);
+      if (!res.success) return;
+      const { token } = res.data;
+      console.log("@Login res", token);
+      //TODO: finish login
+    } catch (err) {
+      console.error("@Login error", err);
+    }
+  };
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -40,13 +61,22 @@ export default function Login() {
             icon="ri-mail-line"
             placeholder="Adresse email"
             type="email"
+            onChangeFnc={(e) => setEmail(e.target.value)}
           />
           <InputWithIcon
             icon="ri-lock-2-line"
             placeholder="Mot de passe"
             type="password"
+            onChangeFnc={(e) => setPassword(e.target.value)}
           />
-          <Button>Se connecter</Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              connectUser();
+            }}
+          >
+            Se connecter
+          </Button>
           <LoginPrompt>
             Vous ne possédez pas de compte ? <br />{" "}
             <a href={`inscription?role=${role}`}>S&apos;inscrire</a>

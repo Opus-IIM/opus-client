@@ -4,25 +4,36 @@ interface InputProps {
   icon: string;
   placeholder: string;
   type: string;
+  onChangeFnc: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputWithIcon: React.FC<InputProps> = ({ icon, placeholder, type }) => {
+const InputWithIcon: React.FC<InputProps> = ({
+  icon,
+  placeholder,
+  type,
+  onChangeFnc,
+}) => {
   const [isPassword] = useState(type === "password");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [inputType, setInputType] = useState(type);
 
   useEffect(() => {
+    if (!isPassword) return;
     if (isPasswordVisible) {
       setInputType("text");
     } else {
       setInputType("password");
     }
-  }, [isPasswordVisible]);
+  }, [isPasswordVisible, isPassword]);
 
   return (
     <InputGroup>
       <i className={icon}></i>
-      <StyledInput type={inputType} placeholder={placeholder} />
+      <StyledInput
+        onChange={(e) => onChangeFnc(e)}
+        type={inputType}
+        placeholder={placeholder}
+      />
       {isPassword && (
         <i
           onClick={() => setIsPasswordVisible(!isPasswordVisible)}
