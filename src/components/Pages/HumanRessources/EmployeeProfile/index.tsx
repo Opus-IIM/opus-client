@@ -22,11 +22,11 @@ export const EmployeeProfileScreen: React.FC<EmployeeProfileProps> = ({
   useEffect(() => {
     const getAllEmployee = async () => {
       SERVICES.API.getEmployee(employeeId)
-        .then((res: APIResponse<Employee>) => res.success && res.data)
-        .then((employee) => {
-          if (!employee) return;
-          setEmploye(employee);
-          console.log("@GetMostEmployees", employee);
+        .then((res: APIResponse<Employee>) => {
+          res.success && res.data;
+          if (!res.data.attributes) return;
+          setEmploye(res.data.attributes as Employee);
+          console.log("@GetMostEmployees", res.data.attributes);
         })
         .catch((err) => console.error("@GetMostEmployees error", err));
     };
@@ -35,9 +35,11 @@ export const EmployeeProfileScreen: React.FC<EmployeeProfileProps> = ({
 
   console.log("@EmployeeProfileScreen", employee);
 
+  if (!employee) return <div>loading...</div>;
+
   return (
     <EmployeeProfileContainer>
-      <EmployeeProfileHeader />
+      <EmployeeProfileHeader employee={employee!} />
       <FlexContainer>
         <ColumnContainer>
           <CardContainer>

@@ -1,13 +1,18 @@
 import { SubText, TitleH4 } from "@styles/components/Text";
+import { Employee } from "@typesDef/Employee";
 import { styled } from "styled-components";
 
-export const EmployeeCard: React.FC = () => {
+export const EmployeeCard: React.FC<{
+  employee: Employee;
+}> = ({ employee }) => {
   return (
     <EmployeeCardContainer>
       <ImageContainer url="https://i.pravatar.cc/300" />
       <div>
-        <TitleH4>Jean Michel</TitleH4>
-        <SubText>Avocat</SubText>
+        <TitleH4>
+          {employee.Name} {employee.Lastname}
+        </TitleH4>
+        <SubText>{employee.Function}</SubText>
       </div>
     </EmployeeCardContainer>
   );

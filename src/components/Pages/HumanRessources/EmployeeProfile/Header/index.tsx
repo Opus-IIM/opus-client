@@ -1,16 +1,19 @@
 import { Button } from "@components/common/Button";
 import { EmployeeCard } from "@components/common/Employee/EmployeeCard";
 import { EmployeeInfo } from "@components/common/Employee/EmployeeInfo";
+import { Employee } from "@typesDef/Employee";
 import { styled } from "styled-components";
 
-export const EmployeeProfileHeader: React.FC = () => {
+export const EmployeeProfileHeader: React.FC<{ employee: Employee }> = ({
+  employee,
+}) => {
   return (
     <EmployeeProfileContainer>
       <FlexContainer>
-        <EmployeeCard />
+        <EmployeeCard employee={employee} />
         <Button>Prendre RDV</Button>
       </FlexContainer>
-      <EmployeeInfo />
+      <EmployeeInfo employee={employee} />
     </EmployeeProfileContainer>
   );
 };

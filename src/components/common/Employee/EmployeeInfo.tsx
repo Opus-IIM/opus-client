@@ -1,24 +1,27 @@
 import { BoldText, SubText } from "@styles/components/Text";
+import { Employee } from "@typesDef/Employee";
 import { styled } from "styled-components";
 
-export const EmployeeInfo: React.FC = () => {
+export const EmployeeInfo: React.FC<{ employee: Employee }> = ({
+  employee,
+}) => {
   return (
     <EmployeeInfoContainer>
       <div>
         <SubText>Email</SubText>
-        <BoldText>Bodgdan@gmail.com</BoldText>
+        <BoldText>{employee.Email || "-"}</BoldText>
       </div>
       <div>
         <SubText>Tèl.</SubText>
-        <BoldText>06.54.34.34.53</BoldText>
+        <BoldText>{employee.PhoneNumber || "-"}</BoldText>
       </div>
       <div>
         <SubText>Adresse</SubText>
-        <BoldText>3 rue de la rép</BoldText>
+        <BoldText>{employee.Adress || "-"}</BoldText>
       </div>
       <div>
         <SubText>Ancienneté</SubText>
-        <BoldText>Depuis 2023</BoldText>
+        <BoldText>{employee.Seniority || "-"}</BoldText>
       </div>
     </EmployeeInfoContainer>
   );
