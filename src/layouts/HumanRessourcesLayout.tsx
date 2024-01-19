@@ -8,8 +8,10 @@ export const HumanRessourcesLayout: React.FC<LayoutProps> = ({ children }) => {
     <HumanRessourcesContainer>
       <div className="app">
         <NavBar />
-        <TopBar />
-        <div className="main">{children}</div>
+        <div className="main">
+          <TopBar />
+          <div className="container">{children}</div>
+        </div>
       </div>
     </HumanRessourcesContainer>
   );
@@ -26,10 +28,26 @@ const HumanRessourcesContainer = styled.div`
   animation: main-background 10s ease infinite;
   transition: background 0.3s ease-in-out;
 
-  .main {
+  .app {
     width: 100%;
     min-height: 100%;
-    padding-top: 88px;
-    padding-left: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .main {
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      .container {
+        min-height: 100%;
+        width: calc(100% - 250px);
+        padding-left: 250px;
+      }
+    }
   }
 `;
