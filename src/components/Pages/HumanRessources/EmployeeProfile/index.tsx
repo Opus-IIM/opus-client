@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import SERVICES from "@services/index";
 import { APIResponse } from "@typesDef/API";
 import { Employee } from "@typesDef/Employee";
+import { styled } from "styled-components";
+
+import { EmployeeProfileHeader } from "./Header";
 
 type EmployeeProfileProps = {
   employeeId: string;
@@ -29,8 +32,13 @@ export const EmployeeProfileScreen: React.FC<EmployeeProfileProps> = ({
   console.log("@EmployeeProfileScreen", employee);
 
   return (
-    <div>
-      <h1>EmployeeProfileScreen </h1>
-    </div>
+    <EmployeeProfileContainer>
+      <EmployeeProfileHeader />
+    </EmployeeProfileContainer>
   );
 };
+
+const EmployeeProfileContainer = styled.div`
+  background: ${({ theme }) => theme.colors.light};
+  padding: 24px;
+`;
