@@ -14,23 +14,22 @@ export default function Register() {
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const router = useRouter();
 
   const registerUser = async () => {
-    if (!email || !password || !name) return;
+    if (!email || !password || !username) return;
     const data: RegisterData = {
       email,
       password,
-      name,
-      role: role === "employe" ? "employee" : "humanResources",
+      username,
+      role: role === "employee" ? "employee" : "humanresource",
     };
     try {
       const res = await SERVICES.API.registerUser(data);
       if (!res.success) return;
       const { message } = res.data;
       console.log("@Register res", message);
-      //TODO: finish register
     } catch (err) {
       console.error("@Register error", err);
     }
@@ -64,7 +63,7 @@ export default function Register() {
             icon="ri-user-line"
             placeholder="Nom"
             type="text"
-            onChangeFnc={(e) => setName(e.target.value)}
+            onChangeFnc={(e) => setUsername(e.target.value)}
           />
           <InputWithIcon
             icon="ri-mail-line"

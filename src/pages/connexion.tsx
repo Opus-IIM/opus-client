@@ -19,7 +19,7 @@ export default function Login() {
   const connectUser = async () => {
     if (!email || !password) return;
     const data: LoginData = {
-      email,
+      identifier: email,
       password,
     };
     try {
@@ -27,7 +27,6 @@ export default function Login() {
       if (!res.success) return;
       const { token } = res.data;
       console.log("@Login res", token);
-      //TODO: finish login
     } catch (err) {
       console.error("@Login error", err);
     }
@@ -37,8 +36,8 @@ export default function Login() {
     if (!router.isReady) return;
     const role = router.query.role;
     switch (role) {
-      case "employe":
-        setRole("employe");
+      case "employee":
+        setRole("employee");
         theme.setGlobalTheme(employee);
         break;
       case "rh":

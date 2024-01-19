@@ -2,8 +2,7 @@ import { requester } from "@plugins/requester";
 import { APIResponse } from "@typesDef/API";
 import { RegisterData, RegisterResponse } from "@typesDef/Register";
 
-//TODO: Change this to the correct endpoint
-const BASE_URL = "/register-user";
+const BASE_URL = "/auth/local/register";
 
 type registerAPI = {
   registerUser: typeof registerUser;

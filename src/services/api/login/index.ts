@@ -3,7 +3,7 @@ import { APIResponse } from "@typesDef/API";
 import { LoginData, LoginResponse } from "@typesDef/Login";
 
 //TODO: Change this to the correct endpoint
-const BASE_URL = "/login-user";
+const BASE_URL = "/auth/local";
 
 type loginAPI = {
   loginUser: typeof loginUser;
