@@ -16,6 +16,7 @@ export type Theme = {
     grey: {
       600: string;
       400: string;
+      200: string;
     };
     text: {
       light: string;

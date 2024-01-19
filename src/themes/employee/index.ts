@@ -12,6 +12,7 @@ const employee: Theme = {
     grey: {
       600: "#64748B",
       400: "#94A3B8",
+      200: "#E2E8F0",
     },
     text: {
       light: "#f8f9fa",
