@@ -10,11 +10,8 @@ export const TopBar: React.FC = () => {
 
 const TopBarContainer = styled.div`
   height: 88px;
-  width: 100%;
+  width: calc(100% - 250px);
   user-select: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
   z-index: 99;
   background: blue;
   padding-left: 250px;
