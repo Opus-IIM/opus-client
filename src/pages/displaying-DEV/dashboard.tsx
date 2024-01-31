@@ -16,12 +16,14 @@ const Gapped = styled.div`
 `;
 
 const Bordered = styled.div`
-  border: 1px solid black;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 5px 0px #000000;
+  border-radius: 0.5rem;
   padding: 0.5rem;
   width: 100%;
 `;
 
-export default function DisplayRh() {
+export default function Dashboard() {
   const [data, setData] = useState<
     {
       employeesWithRdv: number;
@@ -48,12 +50,22 @@ export default function DisplayRh() {
     <Container>
       {data.map((item, index) => (
         <Gapped key={index}>
-          <Bordered>Employees with Rdv: {item.employeesWithRdv}</Bordered>
-          <Bordered>Employees without Rdv: {item.employeesWithoutRdv}</Bordered>
-          <Bordered>Rdvs Done: {item.rdvsDone}</Bordered>
-          <Bordered>Rdvs Not Done: {item.rdvsNotDone}</Bordered>
           <Bordered>
-            Statuses:
+            Employees Counts:
+            <div>
+              <p>With Rdv: {item.employeesWithRdv}</p>
+              <p>Without Rdv: {item.employeesWithoutRdv}</p>
+            </div>
+          </Bordered>
+          <Bordered>
+            Rdv Counts:
+            <div>
+              <p>Done: {item.rdvsDone}</p>
+              <p>Not Done: {item.rdvsNotDone}</p>
+            </div>
+          </Bordered>
+          <Bordered>
+            Notes Counts:
             {Object.entries(
               item.sortedNotes.reduce(
                 (acc: { [key: string]: number }, note) => {
