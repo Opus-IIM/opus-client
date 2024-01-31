@@ -32,6 +32,7 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
+    "redaxios": "^0.5.1",
     "remixicon": "^4.0.1",
     "sonner": "^1.0.3",
     "styled-components": "^6.0.8",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
+    "@types/aria-query": "^5.0.4",
     "@types/axios": "^0.14.0",
     "@types/node": "^20",
     "@types/react": "^18",
