@@ -1,4 +1,5 @@
 import React from "react";
+import { PieChart } from "@mui/x-charts/PieChart";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -171,6 +172,42 @@ const DashboardContent = styled.div`
 
   .employeeStatus {
     grid-area: 1 / 1 / 2 / 2;
+
+    .statusData {
+      padding: 1rem 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .statTitle {
+        justify-content: center;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        i:hover {
+          cursor: pointer;
+        }
+      }
+
+      .statAndValue {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .child {
+        gap: 0.5rem;
+
+        .status {
+          color: #64748b;
+        }
+
+        .statValue {
+          font-weight: bold;
+        }
+      }
+    }
   }
 
   .reconversionSucceed {
@@ -499,7 +536,49 @@ export default function Dashboard() {
           </div>
         </Header>
         <DashboardContent>
-          <DataBlock className="employeeStatus">EmployeeStatus</DataBlock>
+          <DataBlock className="employeeStatus">
+            <div className="statusData">
+              <div className="statTitle">
+                <h1>États des agents</h1>
+                <i className="ri-error-warning-line"></i>
+              </div>
+              <div>
+                <PieChart
+                  colors={["#DC1A1A", "#FFD700", "#01AA01"]}
+                  series={[
+                    {
+                      data: [
+                        { id: 0, value: 300, label: "Urgents" },
+                        { id: 1, value: 174, label: "A surveiller" },
+                        { id: 2, value: 423, label: "Neutre" },
+                      ],
+                      highlightScope: { faded: "global", highlighted: "item" },
+                      faded: {
+                        innerRadius: 30,
+                        additionalRadius: -30,
+                        color: "#64748b",
+                      },
+                    },
+                  ]}
+                  height={200}
+                />
+              </div>
+              <div className="statAndValue">
+                <div className="statAndValue child">
+                  <p className="status">🔴 Urgents: </p>
+                  <p className="statValue">300</p>
+                </div>
+                <div className="statAndValue child">
+                  <p className="status">🟡 A surveiller: </p>
+                  <p className="statValue">174</p>
+                </div>
+                <div className="statAndValue child">
+                  <p className="status">🟢 Neutre: </p>
+                  <p className="statValue">423</p>
+                </div>
+              </div>
+            </div>
+          </DataBlock>
           <DataBlock className="employeeRdvs">
             <div className="agentRdvs">
               <div className="title">
