@@ -1,4 +1,7 @@
 import React from "react";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import styled from "styled-components";
 
 const MainPage = styled.div`
@@ -105,12 +108,23 @@ const Header = styled.div`
       padding: 0.5rem 1.5rem;
     }
 
+    .ri-notification-2-line {
+      &:hover {
+        border-radius: 1rem;
+        background-color: #f8fafc;
+        cursor: pointer;
+      }
+    }
+
     button {
         background-color: transparent;
         border: none;
         font-size: 1rem;
+        padding: 0.5rem 1rem;
 
         &:hover {
+            background-color: #f8fafc;
+            border-radius: 1rem;
             cursor: pointer;
         }
     }
@@ -181,6 +195,32 @@ const DashboardContent = styled.div`
 
   .calendar {
     grid-area: 1 / 3 / 2 / 4;
+
+    .css-1q04gal-MuiDateCalendar-root {
+      padding: 1rem 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .css-i5q14k-MuiDayCalendar-header {
+      justify-content: space-between;
+    }
+
+    .css-nk89i7-MuiPickersCalendarHeader-root {
+      padding-left: 0;
+      padding-right: 0;
+      padding: 0px 0 1rem 0.5rem;
+      margin: 0;
+      border-bottom: 2px solid #f8f9fa;
+    }
+
+    .css-dplwbx-MuiPickersCalendarHeader-label {
+      font-weight: bold;
+    }
+
+    .css-flbe84-MuiDayCalendar-weekContainer {
+      justify-content: space-between;
+    }
   }
 
   .rdvsList {
@@ -229,7 +269,7 @@ const DataBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   width: 85%;
 
   .category {
@@ -278,6 +318,10 @@ const Rdv = styled.div`
   align-items: center;
   padding: 0.25rem 0.5rem;
   gap: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   img {
     width: 3rem;
@@ -366,7 +410,11 @@ export default function Dashboard() {
         <DashboardContent>
           <DataBlock className="employeeStatus">EmployeeStatus</DataBlock>
           <DataBlock className="employeeRdvs">EmployeeRdvs</DataBlock>
-          <DataBlock className="calendar">Calendar</DataBlock>
+          <DataBlock className="calendar">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar />
+            </LocalizationProvider>
+          </DataBlock>
           <DataBlock className="reconversionSucceed">
             <div className="rfidAndFull">
               <div className="rfid">
@@ -397,7 +445,7 @@ export default function Dashboard() {
             <div className="data">
               <h1>21</h1>
               <p className="percentage">
-                <i className="ri-arrow-up-line"></i>59%
+                <i className="ri-arrow-up-line"></i>5%
               </p>
             </div>
           </DataBlock>
@@ -414,7 +462,7 @@ export default function Dashboard() {
             <div className="data">
               <h1>41</h1>
               <p className="percentage">
-                <i className="ri-arrow-up-line"></i>59%
+                <i className="ri-arrow-up-line"></i>80%
               </p>
             </div>
           </DataBlock>
@@ -431,7 +479,7 @@ export default function Dashboard() {
             <div className="data">
               <h1>542</h1>
               <p className="percentage">
-                <i className="ri-arrow-up-line"></i>59%
+                <i className="ri-arrow-up-line"></i>25%
               </p>
             </div>
           </DataBlock>
