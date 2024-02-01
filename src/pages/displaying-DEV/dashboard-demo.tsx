@@ -183,6 +183,97 @@ const DashboardContent = styled.div`
 
   .employeeRdvs {
     grid-area: 1 / 2 / 2 / 3;
+
+    .agentRdvs {
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 1rem 0;
+      display: flex;
+      height: 100%;
+      gap: 1.5rem;
+
+      .grayed {
+        color: #64748b;
+      }
+
+      .title {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        i:hover {
+          cursor: pointer;
+        }
+      }
+
+      .agentData {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 1rem 0 0 0;
+
+        div {
+          justify-content: space-between;
+          flex-direction: column;
+          border-radius: 0.5rem;
+          text-align: center;
+          padding: 1rem 0;
+          color: #ffffff;
+          display: flex;
+          width: 100%;
+
+          .icon {
+            display: flex;
+            align-items: center;
+
+            i {
+              border: 2px solid #ffffff;
+              border-radius: 100%;
+              font-size: 1.5rem;
+              padding: 1rem 0.5rem;
+              width: 3rem;
+            }
+          }
+        }
+
+        .passe {
+          background-color: #2563eb;
+        }
+
+        .enAttente {
+          background-color: #38bdf8;
+        }
+
+        .sansRdv {
+          background-color: #f8fafc;
+
+          i {
+            border: 2px solid #cbd5e1 !important;
+          }
+
+          i,
+          h1 {
+            color: #000000;
+          }
+        }
+      }
+
+      .valuesAndGraph {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+
+        i {
+          font-size: 2rem;
+          padding: 1rem;
+        }
+
+        i:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   .reconversionFailed {
@@ -269,7 +360,7 @@ const DataBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   width: 85%;
 
   .category {
@@ -409,7 +500,55 @@ export default function Dashboard() {
         </Header>
         <DashboardContent>
           <DataBlock className="employeeStatus">EmployeeStatus</DataBlock>
-          <DataBlock className="employeeRdvs">EmployeeRdvs</DataBlock>
+          <DataBlock className="employeeRdvs">
+            <div className="agentRdvs">
+              <div className="title">
+                <h1>RDV Agents</h1>
+                <i className="ri-more-line"></i>
+              </div>
+              <div className="agentData">
+                <div className="passe">
+                  <div className="icon">
+                    <i className="ri-bubble-chart-line"></i>
+                  </div>
+                  <div>
+                    <p>Passé</p>
+                    <h1>40</h1>
+                  </div>
+                </div>
+                <div className="enAttente">
+                  <div className="icon">
+                    <i className="ri-user-follow-line"></i>
+                  </div>
+                  <div>
+                    <p>En attente</p>
+                    <h1>79</h1>
+                  </div>
+                </div>
+                <div className="sansRdv">
+                  <div className="icon">
+                    <i className="ri-checkbox-line"></i>
+                  </div>
+                  <div>
+                    <p className="grayed">Sans RDV</p>
+                    <h1>89</h1>
+                  </div>
+                </div>
+              </div>
+              <div className="valuesAndGraph">
+                <div>
+                  <p className="grayed">Agent avec 1 RDV ou +</p>
+                  <div className="data">
+                    <h1>95%</h1>
+                    <p className="percentage">+2,5%</p>
+                  </div>
+                </div>
+                <div>
+                  <i className="ri-bar-chart-box-line"></i>
+                </div>
+              </div>
+            </div>
+          </DataBlock>
           <DataBlock className="calendar">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DateCalendar />
