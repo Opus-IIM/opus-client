@@ -4,7 +4,7 @@ import { APIResponse } from "@typesDef/API";
 import { Employee } from "@typesDef/Employee";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { Link } from "next";
+import Link from "next/link";
 
 export const AllEmployeesScreen: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -30,7 +30,7 @@ export const AllEmployeesScreen: React.FC = () => {
     <AllEmployees>
       <EmployeesContainer>
         <EmployeesHeader>
-          <H2>Tous les employés</H2>
+          <H2>Mes Agents</H2>
           <EmployeesTest>
             1 - 50
           </EmployeesTest>
@@ -38,18 +38,21 @@ export const AllEmployeesScreen: React.FC = () => {
         <EmployeesListContainer>
           <EmployeesTable>
             <EmployeesThead>
-              <tr>
-                <TH scope="col">Nom de l’employé</TH>
+              <TR>
+                <THFirst scope="col">Nom de l'agent</THFirst>
                 <TH scope="col">E-mail</TH>
                 <TH scope="col">Poste</TH>
-                <TH scope="col"></TH>
-              </tr>
+                <THLast scope="col"></THLast>
+              </TR>
             </EmployeesThead>
             <EmployeesTbody>
               <tr>
                   <TD>
                     <Link href={`employee/${employeeId}`}>
-                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/><SPAN>Lucas</SPAN>
+                      <DIVCENTER>
+                        <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                        <SPAN>Lucas</SPAN>
+                      </DIVCENTER>
                     </Link>
                   </TD>
                   <TD>E-mail</TD>
@@ -57,13 +60,27 @@ export const AllEmployeesScreen: React.FC = () => {
                   <TD>...</TD>
               </tr>
               <tr>
-                <TD>Dene</TD>
+                <TD>
+                  <Link href={`employee/${employeeId}`}>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
+                  </Link>
+                </TD>
                 <TD>E-mail</TD>
                 <TD>Dev</TD>
                 <TD>...</TD>
               </tr>
               <tr>
-                <TD>Michel</TD>
+                <TD>
+                  <Link href={`employee/${employeeId}`}>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
+                  </Link>
+                </TD>
                 <TD>E-mail</TD>
                 <TD>CDP</TD>
                 <TD>...</TD>
@@ -97,7 +114,6 @@ const EmployeesHeader = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-
 `;
 
 const EmployeesTest = styled.div`
@@ -138,13 +154,32 @@ const EmployeesTbody = styled.tbody`
 `;
 
 const SPAN = styled.span`
-  transform: translateY(-8px);
   color: black;
+  margin-left: 48px;
+`;
+
+const DIVCENTER = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const TR = styled.tr`
+  background-color: ${({ theme }) => theme.colors.light};
+  border-radius: 8px;
 `;
 
 const TH = styled.th`
   padding: 16px;
-  border-radius: 8px;
+`;
+
+const THFirst = styled.th`
+  padding: 16px;
+  border-radius: 8px 0 0 8px;
+`;
+
+const THLast = styled.th`
+  padding: 16px;
+  border-radius: 0 8px 8px 0;
 `;
 
 const TD = styled.td`
@@ -153,9 +188,9 @@ const TD = styled.td`
 `;
 
 const IMG = styled.img`
+  position: absolute;
   border-radius: 12px;
   height: 32px;
   width: 32px;
   object-fit: cover;
-  margin-right: 16px;
 `;
