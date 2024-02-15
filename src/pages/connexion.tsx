@@ -80,6 +80,7 @@ const Title = styled.h2`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 1em;
 `;
 
 const LoginPrompt = styled.div`
