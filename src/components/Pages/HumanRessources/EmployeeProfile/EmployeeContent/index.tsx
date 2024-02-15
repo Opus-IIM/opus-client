@@ -8,28 +8,46 @@ export const EmployeeContent: React.FC = () => {
     <EmployeeContentWrapper>
       <BoldText>Biographie</BoldText>
       <Content>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse adipisci
-        hic aliquam eveniet sequi vero dolore molestias quis, impedit,
-        voluptatum nobis magnam earum aperiam in! Optio corrupti consequuntur
-        exercitationem rerum!
+        Michel Drucker est un employé de mairie pas comme les autres. Passionné
+        par son travail d&apos;éboueur, il y voit non seulement une manière de
+        contribuer au bien-être de sa communauté, mais également une source
+        d&apos;inspiration inattendue pour sa passion dévorante : le design.
+        <br />
+        Au sein de la mairie, Michel est connu pour son dévouement et son
+        travail acharné. Il commence sa journée avant l&apos;aube, parcourant
+        les rues de la ville pour la garder propre et accueillante. Mais ce qui
+        le distingue vraiment, c&apos;est sa capacité à voir la beauté là où
+        d&apos;autres ne voient que des déchets. Michel collecte des objets
+        abandonnés lors de ses tournées, qu&apos;il transforme plus tard en
+        œuvres d&apos;art ou en pièces de mobilier design. Son appartement,
+        véritable galerie, est peuplé de ces créations uniques, témoignages de
+        sa vision créative.
       </Content>
       <Separator />
       <FlexContainer>
         <BoldText>Compétences</BoldText>
+        <XpImage src="/img/figma.png" alt="employee-xp" />
       </FlexContainer>
       <Separator />
       <BoldText>Expériences</BoldText>
       <TagContainer>
-        <Tag>UI/UX Designer</Tag>
-        <Tag>UX Researcher</Tag>
-        <Tag>Web Developer</Tag>
+        <Tag>Eboueur</Tag>
+        <Tag>Chef Cuistot</Tag>
+        <Tag>Secrétaire</Tag>
       </TagContainer>
       <Separator />
       <BoldText>Formation</BoldText>
+      <Content>Bac S - CAP Couture</Content>
       <Separator />
       <BoldText>Contact</BoldText>
+      <Content>06 43 43 43 43 - michel.drucker@chatennay.fr</Content>
       <Separator />
-      <BoldText>Contact</BoldText>
+      <BoldText>Recommandation</BoldText>
+      <TagContainer>
+        <Tag>UI/UX Designer</Tag>
+        <Tag>Couturier</Tag>
+        <Tag>Retraite</Tag>
+      </TagContainer>
     </EmployeeContentWrapper>
   );
 };
@@ -68,4 +86,10 @@ const Tag = styled.div`
   color: ${({ theme }) => theme.colors.primary};
   border-radius: 250px;
   padding: 7px 16px;
+`;
+
+const XpImage = styled.img`
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
 `;

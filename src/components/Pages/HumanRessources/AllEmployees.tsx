@@ -28,41 +28,67 @@ export const AllEmployeesScreen: React.FC = () => {
     <AllEmployees>
       <EmployeesContainer>
         <EmployeesHeader>
-          <H2>Tous les employés</H2>
+          <H2>Mes Agents</H2>
           <EmployeesTest>1 - 50</EmployeesTest>
         </EmployeesHeader>
         <EmployeesListContainer>
           <EmployeesTable>
             <EmployeesThead>
-              <tr>
-                <TH scope="col">Nom de l’employé</TH>
+              <TR>
+                <THFirst scope="col">Nom de l&apos;agent</THFirst>
                 <TH scope="col">E-mail</TH>
                 <TH scope="col">Poste</TH>
-                <TH scope="col"></TH>
-              </tr>
+                <TH scope="col">Usure</TH>
+                <THLast scope="col"></THLast>
+              </TR>
             </EmployeesThead>
             <EmployeesTbody>
               <tr>
                 <TD>
                   <Link href={`employee/${employeeId}`}>
-                    <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                    <SPAN>Lucas</SPAN>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
                   </Link>
                 </TD>
                 <TD>E-mail</TD>
                 <TD>RH</TD>
+                <TDUSURE>
+                  <span></span>
+                </TDUSURE>
                 <TD>...</TD>
               </tr>
               <tr>
-                <TD>Dene</TD>
+                <TD>
+                  <Link href={`employee/${employeeId}`}>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
+                  </Link>
+                </TD>
                 <TD>E-mail</TD>
                 <TD>Dev</TD>
+                <TDUSURE>
+                  <span className="red"></span>
+                </TDUSURE>
                 <TD>...</TD>
               </tr>
               <tr>
-                <TD>Michel</TD>
+                <TD>
+                  <Link href={`employee/${employeeId}`}>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
+                  </Link>
+                </TD>
                 <TD>E-mail</TD>
                 <TD>CDP</TD>
+                <TDUSURE>
+                  <span className="orange"></span>
+                </TDUSURE>
                 <TD>...</TD>
               </tr>
             </EmployeesTbody>
@@ -130,13 +156,32 @@ const EmployeesThead = styled.thead`
 const EmployeesTbody = styled.tbody``;
 
 const SPAN = styled.span`
-  transform: translateY(-8px);
   color: black;
+  margin-left: 48px;
+`;
+
+const DIVCENTER = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const TR = styled.tr`
+  background-color: ${({ theme }) => theme.colors.light};
+  border-radius: 8px;
 `;
 
 const TH = styled.th`
   padding: 16px;
-  border-radius: 8px;
+`;
+
+const THFirst = styled.th`
+  padding: 16px;
+  border-radius: 8px 0 0 8px;
+`;
+
+const THLast = styled.th`
+  padding: 16px;
+  border-radius: 0 8px 8px 0;
 `;
 
 const TD = styled.td`
@@ -144,10 +189,31 @@ const TD = styled.td`
   border-bottom: 1px solid ${({ theme }) => theme.colors.light};
 `;
 
+const TDUSURE = styled.td`
+  padding: 24px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+  position: relative;
+
+  span {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: green;
+  }
+
+  span.red {
+    background-color: red;
+  }
+  span.orange {
+    background-color: orange;
+  }
+`;
+
 const IMG = styled.img`
+  position: absolute;
   border-radius: 12px;
   height: 32px;
   width: 32px;
   object-fit: cover;
-  margin-right: 16px;
 `;

@@ -35,11 +35,24 @@ export const EmployeeProfileScreen: React.FC<EmployeeProfileProps> = ({
 
   console.log("@EmployeeProfileScreen", employee);
 
-  if (!employee) return <div>loading...</div>;
+  // if (!employee) return <div>loading...</div>;
+
+  const _employee = {
+    Name: "Michel",
+    Lastname: "Drucker",
+    Function: "Eboueur",
+    createdAt: "string",
+    updatedAt: "string",
+    publishedAt: "string",
+    Email: "michel.drucker@chatennay.fr",
+    Seniority: "43 ans",
+    PhoneNumber: "06 43 43 43 43",
+    Adress: "23 rue de la république, 75001 Paris",
+  };
 
   return (
     <EmployeeProfileContainer>
-      <EmployeeProfileHeader employee={employee!} />
+      <EmployeeProfileHeader employee={_employee!} />
       <FlexContainer>
         <ColumnContainer>
           <CardContainer>
