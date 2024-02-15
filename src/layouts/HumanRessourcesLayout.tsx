@@ -48,7 +48,7 @@ const HumanRessourcesContainer = styled.div`
 
     .container {
       min-height: 100%;
-      width: calc(100% - 250px);
+      width: calc(100vw - 250px);
       margin-left: 250px;
     }
   }

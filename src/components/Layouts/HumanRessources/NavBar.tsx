@@ -1,41 +1,88 @@
 import { AppLogo } from "@components/common/app/AppLogo";
-import Image from "next/image";
+import Link from "next/link";
 import { styled } from "styled-components";
-
-import logo from "../../../../public/img/logo.svg";
 
 export const NavBar: React.FC = () => {
   return (
     <NavBarContainer>
-      <AppLogo />
-      <LogoContainer>
-        <Image
-          src={logo}
-          alt="OPUS Logo"
-          layout="intrinsic" // Cette propriété permet de conserver le ratio d'aspect
-          width={100} // Taille originale en largeur de l'image
-          height={100} // Taille originale en hauteur de l'image
-        />
-      </LogoContainer>
+      <AppLogoContainer>
+        <AppLogo />
+      </AppLogoContainer>
+      <MenuTitle>menu</MenuTitle>
+      <MenuItem href={"/displaying-DEV/dashboard-demo"}>
+        <i className="ri-apps-2-fill"></i>
+        <p>Dashboard</p>
+      </MenuItem>
+      <MenuItem href={"/human-ressources"}>
+        <i className="ri-checkbox-line"></i>
+        <p>Mes rendez-vous</p>
+      </MenuItem>
+      <MenuItem href={"/human-ressources/employees"}>
+        <i className="ri-chat-voice-line"></i>
+        <p>Les agents</p>
+      </MenuItem>
     </NavBarContainer>
   );
 };
 
 const NavBarContainer = styled.div`
   height: 100vh;
-  width: calc(250px - 32px);
+  width: calc(250px - 64px);
   user-select: none;
   position: fixed;
   top: 0;
   bottom: 0;
   z-index: 100;
   background-color: ${({ theme }) => theme.colors.white};
-  padding-left: 32px;
+  padding: 0 32px;
 `;
 
-const LogoContainer = styled.div`
-  padding-top: calc(44px - 15px);
-  width: 100%;
-  height: calc(44px + 15px);
-  border-bottom: solid 1px ${({ theme }) => theme.colors.light};
+const AppLogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 88px;
+  border-bottom: solid 1px ${({ theme }) => theme.colors.grey[200]};
+  margin-bottom: 32px;
+`;
+
+const MenuTitle = styled.h3`
+  font-size: 12px;
+  line-height: 160%;
+  color: ${({ theme }) => theme.colors.grey[400]};
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 16px;
+  margin-bottom: 16px;
+`;
+const MenuItem = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.grey[600]};
+  padding: 0 16px;
+  height: 48px;
+  position: relative;
+  z-index: 2;
+  word-break: keep-all;
+  white-space: nowrap;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      border-radius: 8px;
+      height: 48px;
+      background-color: #f8f9fa;
+      left: 0;
+      z-index: -1;
+    }
+  }
 `;

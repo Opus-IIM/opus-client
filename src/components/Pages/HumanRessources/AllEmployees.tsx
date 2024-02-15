@@ -45,15 +45,15 @@ export const AllEmployeesScreen: React.FC = () => {
             <EmployeesTbody>
               <tr>
                 <TD>
-                  <Link href={`employee/${employeeId}`}>
+                  <Link href="/human-ressources/employee/1">
                     <DIVCENTER>
                       <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                      <SPAN>Lucas</SPAN>
+                      <SPAN>Michel Lelieu</SPAN>
                     </DIVCENTER>
                   </Link>
                 </TD>
-                <TD>E-mail</TD>
-                <TD>RH</TD>
+                <TD>michel.Lelieu@chatennay.fr</TD>
+                <TD>Agent</TD>
                 <TDUSURE>
                   <span></span>
                 </TDUSURE>
@@ -61,14 +61,14 @@ export const AllEmployeesScreen: React.FC = () => {
               </tr>
               <tr>
                 <TD>
-                  <Link href={`employee/${employeeId}`}>
+                  <Link href="/human-ressources/employee/1">
                     <DIVCENTER>
                       <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                      <SPAN>Lucas</SPAN>
+                      <SPAN>Rayan</SPAN>
                     </DIVCENTER>
                   </Link>
                 </TD>
-                <TD>E-mail</TD>
+                <TD>ryan.gherzouli@gmail.com</TD>
                 <TD>Dev</TD>
                 <TDUSURE>
                   <span className="red"></span>
@@ -77,14 +77,14 @@ export const AllEmployeesScreen: React.FC = () => {
               </tr>
               <tr>
                 <TD>
-                  <Link href={`employee/${employeeId}`}>
+                  <Link href="/human-ressources/employee/1">
                     <DIVCENTER>
                       <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                       <SPAN>Lucas</SPAN>
                     </DIVCENTER>
                   </Link>
                 </TD>
-                <TD>E-mail</TD>
+                <TD>lucas.bellier@edu.devinci.fr</TD>
                 <TD>CDP</TD>
                 <TDUSURE>
                   <span className="orange"></span>
@@ -125,7 +125,7 @@ const EmployeesTest = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
   border-radius: 12px;
   padding: 8px;
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.grey[600]};
   font-weight: 500;
   font-size: 12px;
   margin-bottom: 20px;
@@ -149,7 +149,7 @@ const EmployeesTable = styled.table`
 
 const EmployeesThead = styled.thead`
   background-color: ${({ theme }) => theme.colors.light};
-  color: ${({ theme }) => theme.colors.gray[600]};
+  color: ${({ theme }) => theme.colors.grey[600]};
   padding: 20px;
 `;
 
