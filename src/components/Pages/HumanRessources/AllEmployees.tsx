@@ -42,6 +42,7 @@ export const AllEmployeesScreen: React.FC = () => {
                 <THFirst scope="col">Nom de l'agent</THFirst>
                 <TH scope="col">E-mail</TH>
                 <TH scope="col">Poste</TH>
+                <TH scope="col">Usure</TH>
                 <THLast scope="col"></THLast>
               </TR>
             </EmployeesThead>
@@ -57,6 +58,7 @@ export const AllEmployeesScreen: React.FC = () => {
                   </TD>
                   <TD>E-mail</TD>
                   <TD>RH</TD>
+                <TDUSURE><span></span></TDUSURE>
                   <TD>...</TD>
               </tr>
               <tr>
@@ -70,6 +72,7 @@ export const AllEmployeesScreen: React.FC = () => {
                 </TD>
                 <TD>E-mail</TD>
                 <TD>Dev</TD>
+                <TDUSURE><span className="red"></span></TDUSURE>
                 <TD>...</TD>
               </tr>
               <tr>
@@ -83,6 +86,7 @@ export const AllEmployeesScreen: React.FC = () => {
                 </TD>
                 <TD>E-mail</TD>
                 <TD>CDP</TD>
+                <TDUSURE><span className="orange"></span></TDUSURE>
                 <TD>...</TD>
               </tr>
             </EmployeesTbody>
@@ -185,6 +189,27 @@ const THLast = styled.th`
 const TD = styled.td`
   padding: 24px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+`;
+
+const TDUSURE = styled.td`
+  padding: 24px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.light};
+  position: relative;
+  
+  span {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: green;
+  }
+
+  span.red {
+    background-color: red;
+  }
+  span.orange {
+    background-color: orange;
+  }
 `;
 
 const IMG = styled.img`
