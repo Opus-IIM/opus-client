@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 import SERVICES from "@services/index";
 import { APIResponse } from "@typesDef/API";
 import { Employee } from "@typesDef/Employee";
-import styled from "styled-components";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import styled from "styled-components";
 
 export const AllEmployeesScreen: React.FC = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [employeeId] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const getAllEmployee = async () => {
@@ -31,15 +29,13 @@ export const AllEmployeesScreen: React.FC = () => {
       <EmployeesContainer>
         <EmployeesHeader>
           <H2>Mes Agents</H2>
-          <EmployeesTest>
-            1 - 50
-          </EmployeesTest>
+          <EmployeesTest>1 - 50</EmployeesTest>
         </EmployeesHeader>
         <EmployeesListContainer>
           <EmployeesTable>
             <EmployeesThead>
               <TR>
-                <THFirst scope="col">Nom de l'agent</THFirst>
+                <THFirst scope="col">Nom de l&apos;agent</THFirst>
                 <TH scope="col">E-mail</TH>
                 <TH scope="col">Poste</TH>
                 <TH scope="col">Usure</TH>
@@ -48,49 +44,54 @@ export const AllEmployeesScreen: React.FC = () => {
             </EmployeesThead>
             <EmployeesTbody>
               <tr>
-                  <TD>
-                    <Link href={`employee/${employeeId}`}>
-                      <DIVCENTER>
-                        <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
-                        <SPAN>Lucas</SPAN>
-                      </DIVCENTER>
-                    </Link>
-                  </TD>
-                  <TD>E-mail</TD>
-                  <TD>RH</TD>
-                <TDUSURE><span></span></TDUSURE>
-                  <TD>...</TD>
+                <TD>
+                  <Link href={`employee/${employeeId}`}>
+                    <DIVCENTER>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                      <SPAN>Lucas</SPAN>
+                    </DIVCENTER>
+                  </Link>
+                </TD>
+                <TD>E-mail</TD>
+                <TD>RH</TD>
+                <TDUSURE>
+                  <span></span>
+                </TDUSURE>
+                <TD>...</TD>
               </tr>
               <tr>
                 <TD>
                   <Link href={`employee/${employeeId}`}>
                     <DIVCENTER>
-                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                       <SPAN>Lucas</SPAN>
                     </DIVCENTER>
                   </Link>
                 </TD>
                 <TD>E-mail</TD>
                 <TD>Dev</TD>
-                <TDUSURE><span className="red"></span></TDUSURE>
+                <TDUSURE>
+                  <span className="red"></span>
+                </TDUSURE>
                 <TD>...</TD>
               </tr>
               <tr>
                 <TD>
                   <Link href={`employee/${employeeId}`}>
                     <DIVCENTER>
-                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                      <IMG src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                       <SPAN>Lucas</SPAN>
                     </DIVCENTER>
                   </Link>
                 </TD>
                 <TD>E-mail</TD>
                 <TD>CDP</TD>
-                <TDUSURE><span className="orange"></span></TDUSURE>
+                <TDUSURE>
+                  <span className="orange"></span>
+                </TDUSURE>
                 <TD>...</TD>
               </tr>
             </EmployeesTbody>
-
           </EmployeesTable>
         </EmployeesListContainer>
       </EmployeesContainer>
@@ -140,7 +141,6 @@ const EmployeesListContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-
 `;
 
 const EmployeesTable = styled.table`
@@ -153,9 +153,7 @@ const EmployeesThead = styled.thead`
   padding: 20px;
 `;
 
-const EmployeesTbody = styled.tbody`
-
-`;
+const EmployeesTbody = styled.tbody``;
 
 const SPAN = styled.span`
   color: black;
@@ -195,7 +193,7 @@ const TDUSURE = styled.td`
   padding: 24px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.light};
   position: relative;
-  
+
   span {
     position: absolute;
     height: 24px;
