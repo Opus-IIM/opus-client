@@ -1,11 +1,13 @@
-import styled from "styled-components";
+import { AppLogo } from "@components/common/app/AppLogo";
 import Image from "next/image";
+import { styled } from "styled-components";
 
 import logo from "../../../../public/img/logo.svg";
 
 export const NavBar: React.FC = () => {
   return (
     <NavBarContainer>
+      <AppLogo />
       <LogoContainer>
         <Image
           src={logo}
