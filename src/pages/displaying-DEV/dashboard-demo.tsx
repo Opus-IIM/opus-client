@@ -1,9 +1,268 @@
 import React, { useEffect, useRef } from "react";
+import { getHumanRessourcesLayout } from "@layouts/getLayouts";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { CustomNextPage } from "@typesDef/APP";
 import { Chart, ChartConfiguration } from "chart.js/auto";
 import styled from "styled-components";
+
+const data = {
+  labels: [`Neutre (${423})`, `A surveiller (${174})`, `Urgents (${300})`],
+  datasets: [
+    {
+      label: "Agents",
+      data: [423, 174, 300],
+      backgroundColor: [
+        "rgb(39, 201, 63)",
+        "rgb(255, 189, 46)",
+        "rgb(255, 95, 86)",
+      ],
+    },
+  ],
+};
+
+const config: ChartConfiguration<"doughnut", number[], string> = {
+  type: "doughnut",
+  data: data,
+  options: {
+    maintainAspectRatio: true,
+    aspectRatio: 1,
+  },
+};
+
+const DashboardDemo: CustomNextPage = () => {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const myChart = new Chart(
+        chartRef.current.getContext("2d") as CanvasRenderingContext2D,
+        config,
+      );
+      return () => myChart.destroy();
+    }
+  }, []);
+
+  return (
+    <MainPage>
+      <SideBar>
+        <div>
+          <div>
+            <h1 className="appName">Opus</h1>
+          </div>
+          <hr />
+          <div className="sidebarMenu">
+            <p className="menuTitle">MENU</p>
+            <div>
+              <a href="#">
+                <i className="ri-apps-2-fill"></i>
+                <p>Dashboard</p>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                <i className="ri-checkbox-line"></i>
+                <p>Mes rendez-vous</p>
+              </a>
+            </div>
+            <div>
+              <a href="#">
+                <i className="ri-chat-voice-line"></i>
+                <p>Les Employés</p>
+              </a>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div className="sidebarMenu">
+          <hr className="lastHr" />
+          <a>
+            <i className="ri-settings-4-line"></i>
+            <p>Settings</p>
+          </a>
+        </div>
+      </SideBar>
+      <section className="headerAndContent">
+        <DashboardContent>
+          <DataBlock className="employeeStatus">
+            <div className="statusData">
+              <div className="statTitle">
+                <h1>États des agents</h1>
+                <i className="ri-error-warning-line"></i>
+              </div>
+              <div className="statusData">
+                <StyledCanvas id="myChart" ref={chartRef} />
+              </div>
+            </div>
+          </DataBlock>
+          <DataBlock className="employeeRdvs">
+            <div className="agentRdvs">
+              <div className="title">
+                <h1>RDV Agents</h1>
+                <i className="ri-more-line"></i>
+              </div>
+              <div className="agentData">
+                <div className="passe">
+                  <div className="icon">
+                    <i className="ri-bubble-chart-line"></i>
+                  </div>
+                  <div>
+                    <p>Passé</p>
+                    <h1>40</h1>
+                  </div>
+                </div>
+                <div className="enAttente">
+                  <div className="icon">
+                    <i className="ri-user-follow-line"></i>
+                  </div>
+                  <div>
+                    <p>En attente</p>
+                    <h1>79</h1>
+                  </div>
+                </div>
+                <div className="sansRdv">
+                  <div className="icon">
+                    <i className="ri-checkbox-line"></i>
+                  </div>
+                  <div>
+                    <p className="grayed">Sans RDV</p>
+                    <h1>89</h1>
+                  </div>
+                </div>
+              </div>
+              <div className="valuesAndGraph">
+                <div>
+                  <p className="grayed">Agent avec 1 RDV ou +</p>
+                  <div className="data">
+                    <h1>95%</h1>
+                    <p className="percentage">+2,5%</p>
+                  </div>
+                </div>
+                <div>
+                  <i className="ri-bar-chart-box-line"></i>
+                </div>
+              </div>
+            </div>
+          </DataBlock>
+          <DataBlock className="calendar">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar />
+            </LocalizationProvider>
+          </DataBlock>
+          <DataBlock className="reconversionSucceed">
+            <div className="rfidAndFull">
+              <div className="rfid">
+                <i className="ri-rfid-line"></i>
+              </div>
+              <div className="full">
+                <i className="ri-fullscreen-line"></i>
+              </div>
+            </div>
+            <p className="category">Reconversion réussie</p>
+            <div className="data">
+              <h1>234</h1>
+              <p className="percentage">
+                <i className="ri-arrow-up-line"></i>59%
+              </p>
+            </div>
+          </DataBlock>
+          <DataBlock className="reconversionFailed">
+            <div className="rfidAndFull">
+              <div className="rfid">
+                <i className="ri-rfid-line"></i>
+              </div>
+              <div className="full">
+                <i className="ri-fullscreen-line"></i>
+              </div>
+            </div>
+            <p className="category">Reconversion en échec</p>
+            <div className="data">
+              <h1>21</h1>
+              <p className="percentage">
+                <i className="ri-arrow-up-line"></i>5%
+              </p>
+            </div>
+          </DataBlock>
+          <DataBlock className="reconversionInProgress">
+            <div className="rfidAndFull">
+              <div className="rfid">
+                <i className="ri-rfid-line"></i>
+              </div>
+              <div className="full">
+                <i className="ri-fullscreen-line"></i>
+              </div>
+            </div>
+            <p className="category">En cours de reconversion</p>
+            <div className="data">
+              <h1>41</h1>
+              <p className="percentage">
+                <i className="ri-arrow-up-line"></i>80%
+              </p>
+            </div>
+          </DataBlock>
+          <DataBlock className="reconversionElegibility">
+            <div className="rfidAndFull">
+              <div className="rfid">
+                <i className="ri-rfid-line"></i>
+              </div>
+              <div className="full">
+                <i className="ri-fullscreen-line"></i>
+              </div>
+            </div>
+            <p className="category">Éligible à la reconversion</p>
+            <div className="data">
+              <h1>542</h1>
+              <p className="percentage">
+                <i className="ri-arrow-up-line"></i>25%
+              </p>
+            </div>
+          </DataBlock>
+          <DataBlock className="rdvsList">
+            <div className="rdvDisplayList">
+              <div className="title">
+                <h1>Vos prochains RDV</h1>
+                <hr />
+              </div>
+              <div className="rdvs">
+                <Rdv>
+                  <img src="https://randomuser.me/api/portraits/women/19.jpg" />
+                  <div className="agentAndDate">
+                    <p className="agent">Andreana Viola</p>
+                    <p className="date">12/05/23 - 08:30</p>
+                  </div>
+                </Rdv>
+                <hr />
+                <Rdv>
+                  <img src="https://randomuser.me/api/portraits/men/25.jpg" />
+                  <div className="agentAndDate">
+                    <p className="agent">Jonathan Data</p>
+                    <p className="date">27/04/23 - 11:25</p>
+                  </div>
+                </Rdv>
+                <hr />
+                <Rdv>
+                  <img src="https://randomuser.me/api/portraits/men/69.jpg" />
+                  <div className="agentAndDate">
+                    <p className="agent">Filipo Pipo</p>
+                    <p className="date">11/06/23 - 16:40</p>
+                  </div>
+                </Rdv>
+              </div>
+            </div>
+            <a href="#" className="seeAll">
+              See All
+            </a>
+          </DataBlock>
+        </DashboardContent>
+      </section>
+    </MainPage>
+  );
+};
+
+export default DashboardDemo;
+
+DashboardDemo.getLayout = getHumanRessourcesLayout;
 
 const MainPage = styled.div`
   display: flex;
@@ -84,77 +343,6 @@ const SideBar = styled.div`
         color: #1e73be;
         cursor: pointer;
       }
-    }
-  }
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #FFFFFF;
-  height: 8vh;
-  padding: 0rem 1.5rem;
-
-  .rightElements {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    input {
-      width: 15rem;
-      height: 2rem;
-      border-radius: 1rem;
-      border: 2px solid #f8f9fa;
-      padding: 0.5rem 1.5rem;
-    }
-
-    .ri-notification-2-line {
-      &:hover {
-        border-radius: 1rem;
-        background-color: #f8fafc;
-        cursor: pointer;
-      }
-    }
-
-    button {
-        background-color: transparent;
-        border: none;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-
-        &:hover {
-            background-color: #f8fafc;
-            border-radius: 1rem;
-            cursor: pointer;
-        }
-    }
-
-    .profileBtn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      img {
-        width: 2rem;
-        height: 2rem;
-        border-radius: 50%;
-      }
-
-      .idAndBtn {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .userId {
-        display: flex;
-        align-items: flex-start;    
-        flex-direction: column;
-
-        .name {
-            font-weight: bold;
-        }
     }
   }
 `;
@@ -482,277 +670,3 @@ const StyledCanvas = styled.canvas`
   width: 90% !important;
   height: 90% !important;
 `;
-
-const data = {
-  labels: [`Neutre (${423})`, `A surveiller (${174})`, `Urgents (${300})`],
-  datasets: [
-    {
-      label: "Agents",
-      data: [423, 174, 300],
-      backgroundColor: [
-        "rgb(39, 201, 63)",
-        "rgb(255, 189, 46)",
-        "rgb(255, 95, 86)",
-      ],
-    },
-  ],
-};
-
-const config: ChartConfiguration<"doughnut", number[], string> = {
-  type: "doughnut",
-  data: data,
-  options: {
-    maintainAspectRatio: true,
-    aspectRatio: 1,
-  },
-};
-
-export default function Dashboard() {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    if (chartRef.current) {
-      const myChart = new Chart(
-        chartRef.current.getContext("2d") as CanvasRenderingContext2D,
-        config,
-      );
-      return () => myChart.destroy();
-    }
-  }, []);
-
-  return (
-    <MainPage>
-      <SideBar>
-        <div>
-          <div>
-            <h1 className="appName">Opus</h1>
-          </div>
-          <hr />
-          <div className="sidebarMenu">
-            <p className="menuTitle">MENU</p>
-            <div>
-              <a href="#">
-                <i className="ri-apps-2-fill"></i>
-                <p>Dashboard</p>
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <i className="ri-checkbox-line"></i>
-                <p>Mes rendez-vous</p>
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <i className="ri-chat-voice-line"></i>
-                <p>Les Employés</p>
-              </a>
-            </div>
-          </div>
-          <hr />
-        </div>
-        <div className="sidebarMenu">
-          <hr className="lastHr" />
-          <a>
-            <i className="ri-settings-4-line"></i>
-            <p>Settings</p>
-          </a>
-        </div>
-      </SideBar>
-      <section className="headerAndContent">
-        <Header>
-          <div>
-            <h1>Dashboard</h1>
-          </div>
-          <div className="rightElements">
-            <div>
-              <input type="text" placeholder="Search..." />
-            </div>
-            <i className="ri-notification-2-line"></i>
-            <button className="profileBtn">
-              <img src="https://randomuser.me/api/portraits/women/14.jpg" />
-              <div className="idAndBtn">
-                <div className="userId">
-                  <p className="name">Angela L.</p>
-                  <p>Project Manager</p>
-                </div>
-                <i className="ri-arrow-down-s-line"></i>
-              </div>
-            </button>
-          </div>
-        </Header>
-        <DashboardContent>
-          <DataBlock className="employeeStatus">
-            <div className="statusData">
-              <div className="statTitle">
-                <h1>États des agents</h1>
-                <i className="ri-error-warning-line"></i>
-              </div>
-              <div className="statusData">
-                <StyledCanvas id="myChart" ref={chartRef} />
-              </div>
-            </div>
-          </DataBlock>
-          <DataBlock className="employeeRdvs">
-            <div className="agentRdvs">
-              <div className="title">
-                <h1>RDV Agents</h1>
-                <i className="ri-more-line"></i>
-              </div>
-              <div className="agentData">
-                <div className="passe">
-                  <div className="icon">
-                    <i className="ri-bubble-chart-line"></i>
-                  </div>
-                  <div>
-                    <p>Passé</p>
-                    <h1>40</h1>
-                  </div>
-                </div>
-                <div className="enAttente">
-                  <div className="icon">
-                    <i className="ri-user-follow-line"></i>
-                  </div>
-                  <div>
-                    <p>En attente</p>
-                    <h1>79</h1>
-                  </div>
-                </div>
-                <div className="sansRdv">
-                  <div className="icon">
-                    <i className="ri-checkbox-line"></i>
-                  </div>
-                  <div>
-                    <p className="grayed">Sans RDV</p>
-                    <h1>89</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="valuesAndGraph">
-                <div>
-                  <p className="grayed">Agent avec 1 RDV ou +</p>
-                  <div className="data">
-                    <h1>95%</h1>
-                    <p className="percentage">+2,5%</p>
-                  </div>
-                </div>
-                <div>
-                  <i className="ri-bar-chart-box-line"></i>
-                </div>
-              </div>
-            </div>
-          </DataBlock>
-          <DataBlock className="calendar">
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar />
-            </LocalizationProvider>
-          </DataBlock>
-          <DataBlock className="reconversionSucceed">
-            <div className="rfidAndFull">
-              <div className="rfid">
-                <i className="ri-rfid-line"></i>
-              </div>
-              <div className="full">
-                <i className="ri-fullscreen-line"></i>
-              </div>
-            </div>
-            <p className="category">Reconversion réussie</p>
-            <div className="data">
-              <h1>234</h1>
-              <p className="percentage">
-                <i className="ri-arrow-up-line"></i>59%
-              </p>
-            </div>
-          </DataBlock>
-          <DataBlock className="reconversionFailed">
-            <div className="rfidAndFull">
-              <div className="rfid">
-                <i className="ri-rfid-line"></i>
-              </div>
-              <div className="full">
-                <i className="ri-fullscreen-line"></i>
-              </div>
-            </div>
-            <p className="category">Reconversion en échec</p>
-            <div className="data">
-              <h1>21</h1>
-              <p className="percentage">
-                <i className="ri-arrow-up-line"></i>5%
-              </p>
-            </div>
-          </DataBlock>
-          <DataBlock className="reconversionInProgress">
-            <div className="rfidAndFull">
-              <div className="rfid">
-                <i className="ri-rfid-line"></i>
-              </div>
-              <div className="full">
-                <i className="ri-fullscreen-line"></i>
-              </div>
-            </div>
-            <p className="category">En cours de reconversion</p>
-            <div className="data">
-              <h1>41</h1>
-              <p className="percentage">
-                <i className="ri-arrow-up-line"></i>80%
-              </p>
-            </div>
-          </DataBlock>
-          <DataBlock className="reconversionElegibility">
-            <div className="rfidAndFull">
-              <div className="rfid">
-                <i className="ri-rfid-line"></i>
-              </div>
-              <div className="full">
-                <i className="ri-fullscreen-line"></i>
-              </div>
-            </div>
-            <p className="category">Éligible à la reconversion</p>
-            <div className="data">
-              <h1>542</h1>
-              <p className="percentage">
-                <i className="ri-arrow-up-line"></i>25%
-              </p>
-            </div>
-          </DataBlock>
-          <DataBlock className="rdvsList">
-            <div className="rdvDisplayList">
-              <div className="title">
-                <h1>Vos prochains RDV</h1>
-                <hr />
-              </div>
-              <div className="rdvs">
-                <Rdv>
-                  <img src="https://randomuser.me/api/portraits/women/19.jpg" />
-                  <div className="agentAndDate">
-                    <p className="agent">Andreana Viola</p>
-                    <p className="date">12/05/23 - 08:30</p>
-                  </div>
-                </Rdv>
-                <hr />
-                <Rdv>
-                  <img src="https://randomuser.me/api/portraits/men/25.jpg" />
-                  <div className="agentAndDate">
-                    <p className="agent">Jonathan Data</p>
-                    <p className="date">27/04/23 - 11:25</p>
-                  </div>
-                </Rdv>
-                <hr />
-                <Rdv>
-                  <img src="https://randomuser.me/api/portraits/men/69.jpg" />
-                  <div className="agentAndDate">
-                    <p className="agent">Filipo Pipo</p>
-                    <p className="date">11/06/23 - 16:40</p>
-                  </div>
-                </Rdv>
-              </div>
-            </div>
-            <a href="#" className="seeAll">
-              See All
-            </a>
-          </DataBlock>
-        </DashboardContent>
-      </section>
-    </MainPage>
-  );
-}

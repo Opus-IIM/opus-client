@@ -44,20 +44,12 @@ const HumanRessourcesContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-direction: column;
 
-    .main {
-      width: 100%;
+    .container {
       min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-
-      .container {
-        min-height: 100%;
-        width: calc(100% - 250px);
-        margin-left: 250px;
-      }
+      width: calc(100% - 250px);
+      margin-left: 250px;
     }
   }
 `;

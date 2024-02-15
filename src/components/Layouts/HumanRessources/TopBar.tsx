@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const TopBar: React.FC = () => {
   return (
     <TopBarContainer>
-      <H1>Employés</H1>
+      <H1>Welcome Anna</H1>
       <Right>
         <SearchBar>
           <InputWithIcon
@@ -37,6 +37,17 @@ export const TopBar: React.FC = () => {
             />
           </svg>
         </TopBarNotif>
+
+        <UserCard>
+          <img src="https://randomuser.me/api/portraits/women/14.jpg" />
+          <div className="idAndBtn">
+            <div className="userId">
+              <p className="name">Anna L.</p>
+              <p>Project Manager</p>
+            </div>
+            <i className="ri-arrow-down-s-line"></i>
+          </div>
+        </UserCard>
       </Right>
     </TopBarContainer>
   );
@@ -71,6 +82,35 @@ const H1 = styled.h1`
 
 const SearchBar = styled.div`
   font-size: 24px;
+  border-radius: 24px;
 `;
 
 const TopBarNotif = styled.div``;
+
+const UserCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  cursor: pointer;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .idAndBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    .userId {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      .name {
+        font-weight: 600;
+      }
+    }
+  }
+`;
