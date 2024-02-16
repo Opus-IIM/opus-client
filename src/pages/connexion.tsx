@@ -61,6 +61,7 @@ const RegisterContainer = styled.div`
   display: flex;
   height: 100vh;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const FormContainer = styled.div`
