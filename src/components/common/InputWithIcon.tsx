@@ -4,25 +4,36 @@ interface InputProps {
   icon: string;
   placeholder: string;
   type: string;
+  onChangeFnc: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputWithIcon: React.FC<InputProps> = ({ icon, placeholder, type }) => {
+const InputWithIcon: React.FC<InputProps> = ({
+  icon,
+  placeholder,
+  type,
+  onChangeFnc,
+}) => {
   const [isPassword] = useState(type === "password");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [inputType, setInputType] = useState(type);
 
   useEffect(() => {
+    if (!isPassword) return;
     if (isPasswordVisible) {
       setInputType("text");
     } else {
       setInputType("password");
     }
-  }, [isPasswordVisible]);
+  }, [isPasswordVisible, isPassword]);
 
   return (
     <InputGroup>
       <i className={icon}></i>
-      <StyledInput type={inputType} placeholder={placeholder} />
+      <StyledInput
+        onChange={(e) => onChangeFnc(e)}
+        type={inputType}
+        placeholder={placeholder}
+      />
       {isPassword && (
         <i
           onClick={() => setIsPasswordVisible(!isPasswordVisible)}
@@ -36,6 +47,7 @@ const InputWithIcon: React.FC<InputProps> = ({ icon, placeholder, type }) => {
 const InputGroup = styled.div`
   display: flex;
   position: relative;
+  margin-bottom: 1em;
   width: 100%;
   i {
     position: absolute;
@@ -43,7 +55,6 @@ const InputGroup = styled.div`
     left: 15px;
     transform: translateY(-50%);
     color: #ccc;
-    font-size: 20px;
   }
   i:last-child {
     cursor: pointer;
@@ -54,9 +65,9 @@ const InputGroup = styled.div`
 
 const StyledInput = styled.input`
   padding: 10px;
-  padding-left: 48px;
+  padding-left: 40px;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border-radius: 5px;
   width: 100%;
 
   &:focus {

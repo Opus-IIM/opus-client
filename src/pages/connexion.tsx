@@ -10,6 +10,8 @@ import styled from "styled-components";
 export default function Login() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
+  const [, setEmail] = useState("");
+  const [, setPassword] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -50,11 +52,13 @@ export default function Login() {
             icon="ri-mail-line"
             placeholder="Adresse email"
             type="email"
+            onChangeFnc={(e) => setEmail(e.target.value)}
           />
           <InputWithIcon
             icon="ri-lock-2-line"
             placeholder="Mot de passe"
             type="password"
+            onChangeFnc={(e) => setPassword(e.target.value)}
           />
           <Button onClick={handleClick}>Se connecter</Button>
           <LoginPrompt>

@@ -10,6 +10,9 @@ import styled from "styled-components";
 export default function Register() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
+  const [, setEmail] = useState("");
+  const [, setPassword] = useState("");
+  const [, setUsername] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -36,16 +39,23 @@ export default function Register() {
       <FormContainer>
         <Title>Inscription</Title>
         <Form>
-          <InputWithIcon icon="ri-user-line" placeholder="Nom" type="text" />
+          <InputWithIcon
+            icon="ri-user-line"
+            placeholder="Nom"
+            type="text"
+            onChangeFnc={(e) => setUsername(e.target.value)}
+          />
           <InputWithIcon
             icon="ri-mail-line"
             placeholder="Adresse email"
             type="email"
+            onChangeFnc={(e) => setEmail(e.target.value)}
           />
           <InputWithIcon
             icon="ri-lock-2-line"
             placeholder="Mot de passe"
             type="password"
+            onChangeFnc={(e) => setPassword(e.target.value)}
           />
           <Button>S&apos;inscrire</Button>
           <LoginPrompt>
