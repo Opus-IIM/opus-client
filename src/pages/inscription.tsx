@@ -17,6 +17,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const registerUser = async () => {
     if (!email || !password || !username) return;
     const data: RegisterData = {
@@ -32,6 +33,16 @@ export default function Register() {
       console.log("@Register res", message);
     } catch (err) {
       console.error("@Register error", err);
+    }
+  };
+
+  const redirectAfterLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (role === "employe") {
+      router.push("/employees/questionnaire");
+    } else {
+      //rh
+      router.push("/displaying-DEV/dashboard-demo");
     }
   };
 
@@ -80,7 +91,8 @@ export default function Register() {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              registerUser();
+              redirectAfterLogin(e);
+              //registerUser();
             }}
           >
             S&apos;inscrire

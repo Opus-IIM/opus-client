@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
@@ -16,10 +16,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const connectUser = async () => {
     if (!email || !password) return;
     const data: LoginData = {
-      identifier: email,
+      email,
       password,
     };
     try {
@@ -36,8 +37,8 @@ export default function Login() {
     if (!router.isReady) return;
     const role = router.query.role;
     switch (role) {
-      case "employee":
-        setRole("employee");
+      case "employe":
+        setRole("employe");
         theme.setGlobalTheme(employee);
         break;
       case "rh":
@@ -49,6 +50,16 @@ export default function Login() {
         break;
     }
   }, [theme, router]);
+
+  const redirectAfterLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (role === "employe") {
+      router.push("/employees/questionnaire");
+    } else {
+      //rh
+      router.push("/displaying-DEV/dashboard-demo");
+    }
+  };
 
   return (
     <RegisterContainer>
@@ -71,7 +82,8 @@ export default function Login() {
           <Button
             onClick={(e) => {
               e.preventDefault();
-              connectUser();
+              //connectUser(); //Uncomment this line to enable login
+              redirectAfterLogin(e); //For demo purpose, will be removed for real login
             }}
           >
             Se connecter
@@ -110,6 +122,7 @@ const Title = styled.h2`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 1em;
 `;
 
 const LoginPrompt = styled.div`

@@ -13,8 +13,10 @@ export type Theme = {
     dark: string;
     danger: string;
     white: string;
-    gray: {
+    grey: {
       600: string;
+      400: string;
+      200: string;
     };
     text: {
       light: string;

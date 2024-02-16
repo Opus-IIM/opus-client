@@ -19,6 +19,7 @@ const EmployeProfile: CustomNextPage = () => {
   if (!router.isReady) {
     return <div>Loading...</div>;
   }
+
   return <EmployeeProfileScreen employeeId={employeId as string} />;
 };
 
