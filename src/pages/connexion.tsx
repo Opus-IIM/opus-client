@@ -32,7 +32,12 @@ export default function Login() {
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push("/displaying-DEV/dashboard-demo");
+    if (role === "employe") {
+      router.push("/employees/questionnaire");
+    } else {
+      //rh
+      router.push("/displaying-DEV/dashboard-demo");
+    }
   };
 
   return (
