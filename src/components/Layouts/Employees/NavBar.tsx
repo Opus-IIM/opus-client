@@ -1,20 +1,18 @@
-import Image from "next/image";
+import { AppLogo } from "@components/common/app/AppLogo";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
-import logo from "../../../../public/img/logo.svg";
-
 export const NavBar: React.FC = () => {
+  const router = useRouter();
   return (
     <NavBarContainer>
-      <LogoContainer>
-        <Image
-          src={logo}
-          alt="OPUS Logo"
-          layout="intrinsic" // Cette propriété permet de conserver le ratio d'aspect
-          width={100} // Taille originale en largeur de l'image
-          height={100} // Taille originale en hauteur de l'image
-        />
-      </LogoContainer>
+      <AppLogoContainer
+        onClick={() => {
+          router.push("/");
+        }}
+      >
+        <AppLogo />
+      </AppLogoContainer>
       <BelowContainer>
         <MenuTitle>MENU</MenuTitle>
         <Tabs>
@@ -31,6 +29,17 @@ export const NavBar: React.FC = () => {
     </NavBarContainer>
   );
 };
+
+const AppLogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 88px;
+  border-bottom: solid 1px ${({ theme }) => theme.colors.grey[200]};
+  margin-bottom: 32px;
+  cursor: pointer;
+`;
 
 const NavBarContainer = styled.div`
   height: 100vh;

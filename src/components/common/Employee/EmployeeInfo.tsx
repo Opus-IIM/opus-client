@@ -20,7 +20,7 @@ export const EmployeeInfo: React.FC<{ employee: Employee }> = ({
         <BoldText>{employee.Adress || "-"}</BoldText>
       </div>
       <div>
-        <SubText>Ancienneté</SubText>
+        <SubText>Age</SubText>
         <BoldText>{employee.Seniority || "-"}</BoldText>
       </div>
     </EmployeeInfoContainer>

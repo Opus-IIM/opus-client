@@ -1,11 +1,17 @@
 import { AppLogo } from "@components/common/app/AppLogo";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
 export const NavBar: React.FC = () => {
+  const router = useRouter();
   return (
     <NavBarContainer>
-      <AppLogoContainer>
+      <AppLogoContainer
+        onClick={() => {
+          router.push("/");
+        }}
+      >
         <AppLogo />
       </AppLogoContainer>
       <MenuTitle>menu</MenuTitle>
@@ -45,6 +51,7 @@ const AppLogoContainer = styled.div`
   height: 88px;
   border-bottom: solid 1px ${({ theme }) => theme.colors.grey[200]};
   margin-bottom: 32px;
+  cursor: pointer;
 `;
 
 const MenuTitle = styled.h3`
