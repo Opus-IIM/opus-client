@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
@@ -30,6 +30,11 @@ export default function Login() {
     }
   }, [theme, router]);
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    router.push("/displaying-DEV/dashboard-demo");
+  };
+
   return (
     <RegisterContainer>
       <AuthSideBanner />
@@ -46,7 +51,7 @@ export default function Login() {
             placeholder="Mot de passe"
             type="password"
           />
-          <Button>Se connecter</Button>
+          <Button onClick={handleClick}>Se connecter</Button>
           <LoginPrompt>
             Vous ne possédez pas de compte ? <br />{" "}
             <a href={`inscription?role=${role}`}>S&apos;inscrire</a>
