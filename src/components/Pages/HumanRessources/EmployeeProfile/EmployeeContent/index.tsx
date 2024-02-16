@@ -8,7 +8,7 @@ export const EmployeeContent: React.FC = () => {
     <EmployeeContentWrapper>
       <BoldText>Biographie</BoldText>
       <Content>
-        Michel Drucker est un employé de mairie pas comme les autres. Passionné
+        Michel Lelieu est un employé de mairie pas comme les autres. Passionné
         par son travail d&apos;éboueur, il y voit non seulement une manière de
         contribuer au bien-être de sa communauté, mais également une source
         d&apos;inspiration inattendue pour sa passion dévorante : le design.
@@ -40,7 +40,7 @@ export const EmployeeContent: React.FC = () => {
       <Content>Bac S - CAP Couture</Content>
       <Separator />
       <BoldText>Contact</BoldText>
-      <Content>06 43 43 43 43 - michel.drucker@chatennay.fr</Content>
+      <Content>06 43 43 43 43 - michel.Lelieu@chatennay.fr</Content>
       <Separator />
       <BoldText>Recommandation</BoldText>
       <TagContainer>

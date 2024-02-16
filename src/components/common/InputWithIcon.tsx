@@ -43,6 +43,7 @@ const InputGroup = styled.div`
     left: 15px;
     transform: translateY(-50%);
     color: #ccc;
+    font-size: 20px;
   }
   i:last-child {
     cursor: pointer;
@@ -55,7 +56,7 @@ const StyledInput = styled.input`
   padding: 10px;
   padding-left: 48px;
   border: 1px solid #e2e8f0;
-  border-radius: 5px;
+  border-radius: 8px;
   width: 100%;
 
   &:focus {
