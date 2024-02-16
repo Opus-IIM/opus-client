@@ -2,17 +2,36 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
+import SERVICES from "@services/index";
 import employee from "@themes/employee";
 import humanResources from "@themes/humanResources";
+import { LoginData } from "@typesDef/Login";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function Login() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
-  const [, setEmail] = useState("");
-  const [, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const connectUser = async () => {
+    if (!email || !password) return;
+    const data: LoginData = {
+      email,
+      password,
+    };
+    try {
+      const res = await SERVICES.API.loginUser(data);
+      if (!res.success) return;
+      const { token } = res.data;
+      console.log("@Login res", token);
+    } catch (err) {
+      console.error("@Login error", err);
+    }
+  };
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -32,7 +51,7 @@ export default function Login() {
     }
   }, [theme, router]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const redirectAfterLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (role === "employe") {
       router.push("/employees/questionnaire");
@@ -60,7 +79,15 @@ export default function Login() {
             type="password"
             onChangeFnc={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick}>Se connecter</Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              //connectUser(); //Uncomment this line to enable login
+              redirectAfterLogin(e); //For demo purpose, will be removed for real login
+            }}
+          >
+            Se connecter
+          </Button>
           <LoginPrompt>
             Vous ne possédez pas de compte ? <br />{" "}
             <a href={`inscription?role=${role}`}>S&apos;inscrire</a>

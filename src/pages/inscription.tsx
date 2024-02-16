@@ -2,18 +2,49 @@ import { useContext, useEffect, useState } from "react";
 import { AuthSideBanner } from "@components/common/AuthSideBanner";
 import InputWithIcon from "@components/common/InputWithIcon";
 import { GlobalThemeContext } from "@contexts/GlobalTheme";
+import SERVICES from "@services/index";
 import employee from "@themes/employee";
 import humanResources from "@themes/humanResources";
+import { RegisterData } from "@typesDef/Register";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function Register() {
   const theme = useContext(GlobalThemeContext);
   const [role, setRole] = useState("");
-  const [, setEmail] = useState("");
-  const [, setPassword] = useState("");
-  const [, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const router = useRouter();
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const registerUser = async () => {
+    if (!email || !password || !username) return;
+    const data: RegisterData = {
+      email,
+      password,
+      username,
+      role: role === "employee" ? "employee" : "humanresource",
+    };
+    try {
+      const res = await SERVICES.API.registerUser(data);
+      if (!res.success) return;
+      const { message } = res.data;
+      console.log("@Register res", message);
+    } catch (err) {
+      console.error("@Register error", err);
+    }
+  };
+
+  const redirectAfterLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (role === "employe") {
+      router.push("/employees/questionnaire");
+    } else {
+      //rh
+      router.push("/human-ressources/dashboard");
+    }
+  };
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -57,7 +88,15 @@ export default function Register() {
             type="password"
             onChangeFnc={(e) => setPassword(e.target.value)}
           />
-          <Button>S&apos;inscrire</Button>
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              redirectAfterLogin(e);
+              //registerUser();
+            }}
+          >
+            S&apos;inscrire
+          </Button>
           <LoginPrompt>
             Vous possédez déjà un compte ? <br />{" "}
             <a href={`connexion?role=${role}`}>Se connecter</a>
