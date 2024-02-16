@@ -13,7 +13,7 @@ export const NavBar: React.FC = () => {
         <i className="ri-apps-2-fill"></i>
         <p>Dashboard</p>
       </MenuItem>
-      <MenuItem href={"/human-ressources"}>
+        <MenuItem href={"/displaying-DEV/meet-demo"}>
         <i className="ri-checkbox-line"></i>
         <p>Mes rendez-vous</p>
       </MenuItem>
