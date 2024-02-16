@@ -9,11 +9,11 @@ export const NavBar: React.FC = () => {
         <AppLogo />
       </AppLogoContainer>
       <MenuTitle>menu</MenuTitle>
-      <MenuItem href={"/displaying-DEV/dashboard-demo"}>
+      <MenuItem href={"/human-ressources/dashboard"}>
         <i className="ri-apps-2-fill"></i>
         <p>Dashboard</p>
       </MenuItem>
-      <MenuItem href={"/human-ressources"}>
+      <MenuItem href={"/human-ressources/mes-rendez-vous"}>
         <i className="ri-checkbox-line"></i>
         <p>Mes rendez-vous</p>
       </MenuItem>
