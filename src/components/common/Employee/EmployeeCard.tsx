@@ -7,7 +7,7 @@ export const EmployeeCard: React.FC<{
 }> = ({ employee }) => {
   return (
     <EmployeeCardContainer>
-      <ImageContainer url="https://i.pravatar.cc/300" />
+      <ImageContainer url="https://randomuser.me/api/portraits/men/1.jpg" />
       <div>
         <TitleH4>
           {employee.Name} {employee.Lastname}

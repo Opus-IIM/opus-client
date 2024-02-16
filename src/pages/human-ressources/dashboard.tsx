@@ -70,7 +70,7 @@ const DashboardDemo: CustomNextPage = () => {
                   <i className="ri-bubble-chart-line"></i>
                 </div>
                 <div>
-                  <p>Passé</p>
+                  <p>Passés</p>
                   <h1>40</h1>
                 </div>
               </div>
@@ -123,7 +123,7 @@ const DashboardDemo: CustomNextPage = () => {
           </div>
           <p className="category">Reconversion réussie</p>
           <div className="data">
-            <h1>234</h1>
+            <h1>73</h1>
             <p className="percentage">
               <i className="ri-arrow-up-line"></i>59%
             </p>
@@ -140,7 +140,7 @@ const DashboardDemo: CustomNextPage = () => {
           </div>
           <p className="category">Reconversion en échec</p>
           <div className="data">
-            <h1>21</h1>
+            <h1>6</h1>
             <p className="percentage">
               <i className="ri-arrow-up-line"></i>5%
             </p>
@@ -157,7 +157,7 @@ const DashboardDemo: CustomNextPage = () => {
           </div>
           <p className="category">En cours de reconversion</p>
           <div className="data">
-            <h1>41</h1>
+            <h1>18</h1>
             <p className="percentage">
               <i className="ri-arrow-up-line"></i>80%
             </p>
@@ -172,9 +172,9 @@ const DashboardDemo: CustomNextPage = () => {
               <i className="ri-fullscreen-line"></i>
             </div>
           </div>
-          <p className="category">Éligible à la reconversion</p>
+          <p className="category">Demande de reconversion</p>
           <div className="data">
-            <h1>542</h1>
+            <h1>12</h1>
             <p className="percentage">
               <i className="ri-arrow-up-line"></i>25%
             </p>
@@ -198,7 +198,7 @@ const DashboardDemo: CustomNextPage = () => {
               <Rdv>
                 <img src="https://randomuser.me/api/portraits/men/25.jpg" />
                 <div className="agentAndDate">
-                  <p className="agent">Jonathan Data</p>
+                  <p className="agent">Jonathan Durcoz</p>
                   <p className="date">27/04/23 - 11:25</p>
                 </div>
               </Rdv>
@@ -206,7 +206,7 @@ const DashboardDemo: CustomNextPage = () => {
               <Rdv>
                 <img src="https://randomuser.me/api/portraits/men/69.jpg" />
                 <div className="agentAndDate">
-                  <p className="agent">Filipo Pipo</p>
+                  <p className="agent">Felipe Martinez</p>
                   <p className="date">11/06/23 - 16:40</p>
                 </div>
               </Rdv>

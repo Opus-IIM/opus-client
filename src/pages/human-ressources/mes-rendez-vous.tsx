@@ -12,7 +12,7 @@ const MesRendezVous: CustomNextPage = () => {
             <div className="titleRdv">
               <h1>Tous mes RDV</h1>
               <div className="titleRdvDate">
-                <p>Dec 20 - Dec 31</p>
+                <p>12 Fev - 26 Fev</p>
                 <svg
                   width="16"
                   height="16"
@@ -80,12 +80,12 @@ const MesRendezVous: CustomNextPage = () => {
               </RdvMenu>
               <Rdv>
                 <input type="checkbox" id="scales" name="scales" checked />
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/women/19.jpg" />
                 <div className="listRdv">
                   <p className="agent">Andreana Viola</p>
-                  <p className="agent">Apple</p>
-                  <p className="agent">100</p>
-                  <p className="agent">87</p>
+                  <p className="agent">Administration</p>
+                  <p className="agent">39723</p>
+                  <p className="agent">69</p>
                   <p className="agent">Voir le profil</p>
                   <p className="agent">...</p>
                 </div>
@@ -93,12 +93,12 @@ const MesRendezVous: CustomNextPage = () => {
               <hr />
               <Rdv>
                 <input type="checkbox" id="scales" name="scales" />
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/men/25.jpg" />
                 <div className="listRdv">
-                  <p className="agent">Andreana Viola</p>
-                  <p className="agent">Apple</p>
-                  <p className="agent">100</p>
-                  <p className="agent">87</p>
+                  <p className="agent">Jonathan Durcoz</p>
+                  <p className="agent">Evenements</p>
+                  <p className="agent">37194</p>
+                  <p className="agent">58</p>
                   <p className="agent">Voir le profil</p>
                   <p className="agent">...</p>
                 </div>
@@ -106,12 +106,12 @@ const MesRendezVous: CustomNextPage = () => {
               <hr />
               <Rdv>
                 <input type="checkbox" id="scales" name="scales" />
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/men/69.jpg" />
                 <div className="listRdv">
-                  <p className="agent">Andreana Viola</p>
-                  <p className="agent">Apple</p>
-                  <p className="agent">100</p>
-                  <p className="agent">87</p>
+                  <p className="agent">Felipe Martinez</p>
+                  <p className="agent">Evenements</p>
+                  <p className="agent">97317</p>
+                  <p className="agent">62</p>
                   <p className="agent">Voir le profil</p>
                   <p className="agent">...</p>
                 </div>
@@ -129,26 +129,26 @@ const MesRendezVous: CustomNextPage = () => {
             </div>
             <div className="rdvs">
               <Rdv>
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/women/19.jpg" />
                 <div className="agentAndDate">
                   <p className="agent">Andreana Viola</p>
-                  <p className="date">12/05/23 - 08:30</p>
+                  <p className="date">16/02/24 - 16:30</p>
                 </div>
               </Rdv>
               <hr />
               <Rdv>
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/men/25.jpg" />
                 <div className="agentAndDate">
-                  <p className="agent">Andreana Viola</p>
-                  <p className="date">12/05/23 - 08:30</p>
+                  <p className="agent">Jonathan Durcoz</p>
+                  <p className="date">20/02/24 - 08:30</p>
                 </div>
               </Rdv>
               <hr />
               <Rdv>
-                <img src="https://thispersondoesnotexist.com/" />
+                <img src="https://randomuser.me/api/portraits/men/69.jpg" />
                 <div className="agentAndDate">
-                  <p className="agent">Andreana Viola</p>
-                  <p className="date">12/05/23 - 08:30</p>
+                  <p className="agent">Felipe Martinez</p>
+                  <p className="date">21/02/24 - 10:30</p>
                 </div>
               </Rdv>
             </div>

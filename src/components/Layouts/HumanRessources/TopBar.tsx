@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const TopBar: React.FC = () => {
   return (
     <TopBarContainer>
-      <H1>Welcome Anna</H1>
+      <H1>Bienvenue Anna</H1>
       <Right>
         <SearchBar>
           <InputWithIcon
@@ -43,7 +43,7 @@ export const TopBar: React.FC = () => {
           <div className="idAndBtn">
             <div className="userId">
               <p className="name">Anna L.</p>
-              <p>Project Manager</p>
+              <p>RH</p>
             </div>
             <i className="ri-arrow-down-s-line"></i>
           </div>

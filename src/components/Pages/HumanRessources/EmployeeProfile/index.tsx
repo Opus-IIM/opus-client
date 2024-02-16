@@ -40,12 +40,12 @@ export const EmployeeProfileScreen: React.FC<EmployeeProfileProps> = ({
   const _employee = {
     Name: "Michel",
     Lastname: "Lelieu",
-    Function: "Eboueur",
+    Function: "Chef de projet",
     createdAt: "string",
     updatedAt: "string",
     publishedAt: "string",
     Email: "michel.Lelieu@chatennay.fr",
-    Seniority: "43 ans",
+    Seniority: "27 ans",
     PhoneNumber: "06 43 43 43 43",
     Adress: "23 rue de la république, 75001 Paris",
   };

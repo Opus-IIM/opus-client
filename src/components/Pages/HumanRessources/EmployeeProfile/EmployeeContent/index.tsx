@@ -9,8 +9,8 @@ export const EmployeeContent: React.FC = () => {
       <BoldText>Biographie</BoldText>
       <Content>
         Michel Lelieu est un employé de mairie pas comme les autres. Passionné
-        par son travail d&apos;éboueur, il y voit non seulement une manière de
-        contribuer au bien-être de sa communauté, mais également une source
+        par son travail cdp, il y voit non seulement une manière de contribuer
+        au bien-être de sa communauté, mais également une source
         d&apos;inspiration inattendue pour sa passion dévorante : le design.
         <br />
         Au sein de la mairie, Michel est connu pour son dévouement et son
@@ -31,23 +31,22 @@ export const EmployeeContent: React.FC = () => {
       <Separator />
       <BoldText>Expériences</BoldText>
       <TagContainer>
-        <Tag>Eboueur</Tag>
-        <Tag>Chef Cuistot</Tag>
-        <Tag>Secrétaire</Tag>
+        <Tag>Chef de projet</Tag>
+        <Tag>Community Manager</Tag>
       </TagContainer>
       <Separator />
       <BoldText>Formation</BoldText>
-      <Content>Bac S - CAP Couture</Content>
+      <Content>Bac S</Content>
       <Separator />
       <BoldText>Contact</BoldText>
-      <Content>06 43 43 43 43 - michel.Lelieu@chatennay.fr</Content>
+      <Content>06 43 12 38 03 - michel.Lelieu@chatennay.fr</Content>
       <Separator />
-      <BoldText>Recommandation</BoldText>
-      <TagContainer>
+      {/*<BoldText>Recommandation</BoldText>
+       <TagContainer>
         <Tag>UI/UX Designer</Tag>
         <Tag>Couturier</Tag>
         <Tag>Retraite</Tag>
-      </TagContainer>
+      </TagContainer> */}
     </EmployeeContentWrapper>
   );
 };
