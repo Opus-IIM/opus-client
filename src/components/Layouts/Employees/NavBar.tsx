@@ -53,13 +53,6 @@ const NavBarContainer = styled.div`
   padding-left: 32px;
 `;
 
-const LogoContainer = styled.div`
-  padding-top: calc(44px - 15px);
-  width: 100%;
-  height: calc(44px + 15px);
-  border-bottom: solid 1px ${({ theme }) => theme.colors.light};
-`;
-
 const BelowContainer = styled.div`
   display: flex;
   flex-direction: column;
