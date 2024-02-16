@@ -1,8 +1,8 @@
-import React from "react";
-import { PieChart } from "@mui/x-charts/PieChart";
+import React, { useEffect, useRef } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Chart, ChartConfiguration } from "chart.js/auto";
 import styled from "styled-components";
 
 const MainPage = styled.div`
@@ -172,6 +172,7 @@ const DashboardContent = styled.div`
 
   .employeeStatus {
     grid-area: 1 / 1 / 2 / 2;
+    height: 25rem;
 
     .statusData {
       padding: 1rem 0;
@@ -473,7 +474,52 @@ const Rdv = styled.div`
   }
 `;
 
+const StyledCanvas = styled.canvas`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0.5rem;
+  width: 90% !important;
+  height: 90% !important;
+`;
+
+const data = {
+  labels: [`Neutre (${423})`, `A surveiller (${174})`, `Urgents (${300})`],
+  datasets: [
+    {
+      label: "Agents",
+      data: [423, 174, 300],
+      backgroundColor: [
+        "rgb(39, 201, 63)",
+        "rgb(255, 189, 46)",
+        "rgb(255, 95, 86)",
+      ],
+    },
+  ],
+};
+
+const config: ChartConfiguration<"doughnut", number[], string> = {
+  type: "doughnut",
+  data: data,
+  options: {
+    maintainAspectRatio: true,
+    aspectRatio: 1,
+  },
+};
+
 export default function Dashboard() {
+  const chartRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const myChart = new Chart(
+        chartRef.current.getContext("2d") as CanvasRenderingContext2D,
+        config,
+      );
+      return () => myChart.destroy();
+    }
+  }, []);
+
   return (
     <MainPage>
       <SideBar>
@@ -524,7 +570,7 @@ export default function Dashboard() {
             </div>
             <i className="ri-notification-2-line"></i>
             <button className="profileBtn">
-              <img src="https://thispersondoesnotexist.com/" />
+              <img src="https://randomuser.me/api/portraits/women/14.jpg" />
               <div className="idAndBtn">
                 <div className="userId">
                   <p className="name">Angela L.</p>
@@ -542,40 +588,8 @@ export default function Dashboard() {
                 <h1>États des agents</h1>
                 <i className="ri-error-warning-line"></i>
               </div>
-              <div>
-                <PieChart
-                  colors={["#DC1A1A", "#FFD700", "#01AA01"]}
-                  series={[
-                    {
-                      data: [
-                        { id: 0, value: 300, label: "Urgents" },
-                        { id: 1, value: 174, label: "A surveiller" },
-                        { id: 2, value: 423, label: "Neutre" },
-                      ],
-                      highlightScope: { faded: "global", highlighted: "item" },
-                      faded: {
-                        innerRadius: 30,
-                        additionalRadius: -30,
-                        color: "#64748b",
-                      },
-                    },
-                  ]}
-                  height={200}
-                />
-              </div>
-              <div className="statAndValue">
-                <div className="statAndValue child">
-                  <p className="status">🔴 Urgents: </p>
-                  <p className="statValue">300</p>
-                </div>
-                <div className="statAndValue child">
-                  <p className="status">🟡 A surveiller: </p>
-                  <p className="statValue">174</p>
-                </div>
-                <div className="statAndValue child">
-                  <p className="status">🟢 Neutre: </p>
-                  <p className="statValue">423</p>
-                </div>
+              <div className="statusData">
+                <StyledCanvas id="myChart" ref={chartRef} />
               </div>
             </div>
           </DataBlock>
@@ -709,7 +723,7 @@ export default function Dashboard() {
               </div>
               <div className="rdvs">
                 <Rdv>
-                  <img src="https://thispersondoesnotexist.com/" />
+                  <img src="https://randomuser.me/api/portraits/women/19.jpg" />
                   <div className="agentAndDate">
                     <p className="agent">Andreana Viola</p>
                     <p className="date">12/05/23 - 08:30</p>
@@ -717,18 +731,18 @@ export default function Dashboard() {
                 </Rdv>
                 <hr />
                 <Rdv>
-                  <img src="https://thispersondoesnotexist.com/" />
+                  <img src="https://randomuser.me/api/portraits/men/25.jpg" />
                   <div className="agentAndDate">
-                    <p className="agent">Andreana Viola</p>
-                    <p className="date">12/05/23 - 08:30</p>
+                    <p className="agent">Jonathan Data</p>
+                    <p className="date">27/04/23 - 11:25</p>
                   </div>
                 </Rdv>
                 <hr />
                 <Rdv>
-                  <img src="https://thispersondoesnotexist.com/" />
+                  <img src="https://randomuser.me/api/portraits/men/69.jpg" />
                   <div className="agentAndDate">
-                    <p className="agent">Andreana Viola</p>
-                    <p className="date">12/05/23 - 08:30</p>
+                    <p className="agent">Filipo Pipo</p>
+                    <p className="date">11/06/23 - 16:40</p>
                   </div>
                 </Rdv>
               </div>

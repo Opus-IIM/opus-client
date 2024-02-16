@@ -36,7 +36,6 @@ const InputWithIcon: React.FC<InputProps> = ({ icon, placeholder, type }) => {
 const InputGroup = styled.div`
   display: flex;
   position: relative;
-  margin-bottom: 1em;
   width: 100%;
   i {
     position: absolute;
@@ -54,7 +53,7 @@ const InputGroup = styled.div`
 
 const StyledInput = styled.input`
   padding: 10px;
-  padding-left: 40px;
+  padding-left: 48px;
   border: 1px solid #e2e8f0;
   border-radius: 5px;
   width: 100%;

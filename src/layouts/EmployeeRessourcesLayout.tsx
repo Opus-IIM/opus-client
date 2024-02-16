@@ -1,11 +1,11 @@
-import { NavBar } from "@components/Layouts/HumanRessources/NavBar";
-import { TopBar } from "@components/Layouts/HumanRessources/TopBar";
+import { NavBar } from "@components/Layouts/Employees/NavBar";
+import { TopBar } from "@components/Layouts/Employees/TopBar";
 import { LayoutProps } from "@typesDef/APP";
 import styled from "styled-components";
 
-export const HumanRessourcesLayout: React.FC<LayoutProps> = ({ children }) => {
+export const EmployeeLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <HumanRessourcesContainer>
+    <EmployeeContainer>
       <div className="app">
         <NavBar />
         <div className="main">
@@ -13,32 +13,22 @@ export const HumanRessourcesLayout: React.FC<LayoutProps> = ({ children }) => {
           <div className="container">{children}</div>
         </div>
       </div>
-    </HumanRessourcesContainer>
+    </EmployeeContainer>
   );
 };
 
-const HumanRessourcesContainer = styled.div`
+const EmployeeContainer = styled.div`
   min-height: 100vh;
-  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.light};
   background-size: 400% 400%;
   animation: main-background 10s ease infinite;
   transition: background 0.3s ease-in-out;
 
   .app {
-    max-width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .main {
     width: 100%;
     min-height: 100%;
     display: flex;
