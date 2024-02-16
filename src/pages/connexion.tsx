@@ -38,7 +38,7 @@ export default function Login() {
       router.push("/employees/questionnaire");
     } else {
       //rh
-      router.push("/displaying-DEV/dashboard-demo");
+      router.push("/human-ressources/dashboard");
     }
   };
 
